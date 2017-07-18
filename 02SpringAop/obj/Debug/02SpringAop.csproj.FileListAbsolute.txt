@@ -1,0 +1,17 @@
+E:\cts\project\Exerice\02SpringAop\obj\Debug\02SpringAop.csprojResolveAssemblyReference.cache
+E:\cts\project\Exerice\02SpringAop\bin\Debug\02SpringAop.exe
+E:\cts\project\Exerice\02SpringAop\bin\Debug\02SpringAop.pdb
+E:\cts\project\Exerice\02SpringAop\bin\Debug\Common.Logging.dll
+E:\cts\project\Exerice\02SpringAop\obj\Debug\02SpringAop.exe
+E:\cts\project\Exerice\02SpringAop\obj\Debug\02SpringAop.pdb
+E:\cts\project\Exerice\02SpringAop\bin\Debug\Aspect.dll
+E:\cts\project\Exerice\02SpringAop\bin\Debug\Model.dll
+E:\cts\project\Exerice\02SpringAop\bin\Debug\Repository.dll
+E:\cts\project\Exerice\02SpringAop\bin\Debug\Spring.Aop.dll
+E:\cts\project\Exerice\02SpringAop\bin\Debug\Spring.Core.dll
+E:\cts\project\Exerice\02SpringAop\bin\Debug\Aspect.pdb
+E:\cts\project\Exerice\02SpringAop\bin\Debug\Model.pdb
+E:\cts\project\Exerice\02SpringAop\bin\Debug\Repository.pdb
+E:\cts\project\Exerice\02SpringAop\bin\Debug\02SpringAop.exe.config
+E:\Study\Exerice\02SpringAop\obj\Debug\02SpringAop.exe
+E:\Study\Exerice\02SpringAop\obj\Debug\02SpringAop.pdb

@@ -1,0 +1,23 @@
+﻿<Window x:Class="BasicTest.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid ShowGridLines="True" Width="300px">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40px"></RowDefinition>
+            <RowDefinition Height="40px"></RowDefinition>
+            <RowDefinition Height="50px"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Label VerticalAlignment="Center" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" HorizontalAlignment="Center" >线程Test</Label>
+        <Button Width="70" Name="btnSub" Height="20" Grid.Row="1" Grid.Column="0" Click="btnSub_Click"> 并发</Button>
+        <TextBox Name="txtMsg" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" TextWrapping="Wrap" ></TextBox>
+        <Button Name="btnConcurrent" Content="4.0并发处理集合"   Grid.Row="2" Grid.Column="0" Width="100" Click="btnConcurrent_Click" />
+        <TextBox Name="txtMsgCon" Grid.Row="2" Grid.Column="1"  TextWrapping="Wrap" ></TextBox>
+        <TextBox Name="txtMsgConPeek" Grid.Row="2" Grid.Column="2"  TextWrapping="Wrap" ></TextBox>
+    </Grid>
+</Window>

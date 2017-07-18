@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>360Shop网站首页轮播焦点图 - 站长素材</title>
+    <script src="FssSlider/js/jquery.js"></script>
+    <!--<script src="FssSlider/js/iepng.js"></script>-->
+    <script src="FssSlider/js/zzsc.js"></script>
+   <link href="FssSlider/css/zzsc.css" rel="stylesheet" />
+</head>
+<body>
+<div class="gw_zzsc">
+	<ul class="fix_flash">
+        <li imglink="/Fss/banner01.jpg">
+        	<a style="background:url(/Fss/banner01.jpg) center top no-repeat" href="#"></a>
+        </li>
+        <li imglink="/Fss/banner02.jpg">
+            <a style="background:url(/Fss/banner02.jpg) center top no-repeat" href="#"></a>
+        </li>
+        <li imglink="/Fss/banner3.jpg">
+            <a style="background:url(/Fss/banner3.jpg) center top no-repeat" href="#"></a>
+        </li>
+    </ul>
+    <div class="gw_zzsc_center">
+    	<div class="gw_zzsc_flash_v">
+        	<div style="width:96px; height:54px; overflow:hidden;">
+                <img src="/Fss/banner01.jpg" />
+            </div>
+		</div>
+    	<div class="gw_zzsc_flash_s"></div>
+	</div>
+</div>
+<script>
+    $(document).ready(function () {
+    var width = screen.width;// $("body").width()
+    $(".gw_zzsc li").css("width", width+ "px");
+	$(".gw_zzsc li").css("cursor","pointer");
+	$(".gw_zzsc ul").css("width","999999px");
+	var str = "";
+	for(i=0;i<$(".fix_flash li").length;i++){
+		str += "<div class='gw_zzsc_sele' number="+i+" onclick='GW_FIX_scroll(this)'></div>"
+		}
+	$(".gw_zzsc_center").css("left",$("body").width()*0.5+250+"px")
+	$(".gw_zzsc_flash_s").html(str);
+	$(".gw_zzsc_sele").eq(0).addClass("gw_zzsc_over")
+})
+
+</script>
+</body>
+</html>

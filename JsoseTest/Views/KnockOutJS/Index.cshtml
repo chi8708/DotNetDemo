@@ -1,0 +1,134 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <style>
+        .red{color:#ff0000;}
+    </style>
+    <link href="~/Content/bootstrap3.css" rel="stylesheet" />
+    <script src="~/js/jquery-1.8.2.js"></script>
+    <script src="~/js/knockout-2.2.0.js"></script>
+    <script src="~/js/knockout.mapping.js"></script>
+</head>
+<body>
+    <!--单行数据-->
+    <div>
+        <p>
+            <label data-bind="text:first.name,style:{color:'blue'}"></label>
+            <label data-bind="text:first.age,css:{red:true}"></label>
+            @*<label data-bind="text:first.ageLevel(),attr:{title:first.name}"></label>*@
+            <label data-bind="text:first.age()>18?'young':'child'"></label> <!--不能将age()修改为age-->
+            <label data-bind="text:first.FullInfo"></label>
+        </p>
+
+        <!--checked-->
+        <p>
+            hobbies
+            <input type="checkbox" value="run" data-bind="checked:first.hobbies" />run
+            <input type="checkbox" value="football" data-bind="checked:first.hobbies"/>football
+            <input type="checkbox" value="climb" data-bind="checked:first.hobbies"/>climb
+        </p>
+        <p>
+            Gender
+            <input type="radio" name="gender" value="1" data-bind="checked:first.gender"/>male
+            <input type="radio" name="gender" value="0" data-bind="checked:first.gender"/>female
+        </p>
+        <p>
+            <input type="text" data-bind="value:first.name"/>
+            <input type="text" data-bind="value:first.age,valueUpdate: 'afterkeydown'" />
+        </p>
+    </div>
+
+    <!--多行数据table-->
+    <div>
+        <table>
+            <thead><tr><th>name</th><th>age</th><tr></thead>
+            <tbody data-bind="template:{name:'memberTemplate',foreach:people}"></tbody>
+        </table>
+
+        <p>不使用 template</p>
+        <table data-bind="foreach:people">
+            <tr>
+                <td data-bind="text:name"></td>
+                <td><input type="text" data-bind="value :age" /></td>
+            </tr>
+        </table>
+        <script type="text/x-jquery-tmpl" id="memberTemplate">
+            <tr>
+                <td><span data-bind="text:name"></span></td>
+                @*<td><span data-bind="text:age"></span></td>*@
+                <td><input type="text"  data-bind="value:age"/></td>
+                <td><input type="button" value="Remove" data-bind="click:$root.removeMember" /></td>
+            </tr>
+        </script>
+        <input type="button"  value="Add" data-bind="click:addMember"/>
+    </div>
+
+    <!--koif应用-->
+    <!--ko if:editing-->
+       <label> test if</label>
+    <!--/ko-->
+    <!--select-->
+    <div>
+        <select data-bind="options:people,optionsText:'name',optionsValue:'name',value:'rose',optionsCaption:'choose..'"> <!-- anme 属性不能缺引号-->
+
+        </select>
+    </div>
+
+    <script type="text/javascript">
+        $(function () {
+
+            var viewModel1 = {
+                name:ko.observable("jack"),
+                age:ko.observable(18)
+            };
+            //ko.applyBindings(viewModel1);
+
+            //ko.observable 数据类型为字符串或数字
+            var data =[
+                { name: ko.observable("jack"), age: ko.observable(18), hobbies: ko.observableArray(['football', 'climb']), gender: ko.observable(0) },
+                { name: "rose", age: 23},
+            ];
+
+
+            //dependentObservable 不会随模型而变化       变化<label data-bind="text:first.age()>18?'young':'child'"></label>
+             data[0].ageLevel = ko.dependentObservable(function () {
+                return this.age >18 ? 'young' : 'child';
+             });
+
+            // var viewModel2 = { first: data[0], people: ko.observableArray(data) };
+            //ko.applyBindings(viewModel2);
+            //viewModel2.people.push({ name: "tom", age: 12 });
+
+             $.post("GetAllMember", function (data) {
+                 //data.first = ko.mapping.fromJS(data.first);
+                 var viewModel2 = ko.mapping.fromJS(data);//fromjs将js对象的所有属性 添加监控
+                 viewModel2.editing = ko.observable(false);
+
+                 viewModel2.first.FullInfo = ko.dependentObservable(function () {
+                     return viewModel2.first.name() + viewModel2.first.age();
+                 });
+
+                 viewModel2.addMember = function () {
+                     viewModel2.people.push({ name: "new Tom", age: 12 });
+                 };
+
+                 viewModel2.removeMember = function (item) {
+                     viewModel2.people.remove(item);
+                 }
+                 ko.applyBindings(viewModel2);
+                 viewModel2.people.push({ name: "tom", age: 12 });//只有people添加observableArray才有作用。
+             });
+             
+        });
+
+
+    </script>
+</body>
+</html>

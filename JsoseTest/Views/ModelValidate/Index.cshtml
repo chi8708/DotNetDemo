@@ -1,0 +1,24 @@
+﻿@model JsoseTest.Models.Product
+@{
+    ViewBag.Title = "Index";
+}
+<script src="~/js/jquery-1.10.2.js"></script>
+<script src="~/js/jquery.unobtrusive-ajax.min.js"></script>
+<script src="~/js/jquery.validate.min.js"></script>
+<script src="~/js/jquery.validate.unobtrusive.min.js"></script>
+<style type="text/css">
+    .input-validation-error {border:1px solid red}
+</style>
+<h2>Index</h2>
+@using(Ajax.BeginForm("Add", new AjaxOptions() { HttpMethod="Post",OnBegin="Begin"}))
+{
+    @Html.ValidationSummary(true,"Errors:")
+    @Html.TextBoxFor(p => p.Name)
+    @*@Html.ValidationMessageFor(p => p.Name)*@
+    <input type="submit" value="提交"/>
+}
+<script type="text/javascript">
+    function Begin() {
+
+    }
+</script>

@@ -1,0 +1,111 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <!--<input type="text" data-bind="value:data.Data[0].Name"/>-->
+    <link href="SinglePage/Css/bootstrap.css" rel="stylesheet" />
+    <script type="text/javascript" src="Js/jquery-2.1.3.js"></script>
+    <script type="text/javascript" src="Js/bootstrap.js"></script>
+    <script type="text/javascript" src="Js/knockout-2.2.0.js"></script>
+    <div class="search">
+        
+        <fieldset>
+            <legend>Member Search</legend>
+            <span class="pull-left">
+                <label class="control-label w-at">name</label>
+                <input type="text" id="txtName" data-bind="value:name,valueUpdate:'afterkeydown'" class="search-query input-medium" />
+                <label class="control-label w-at">age</label>
+                <input type="text" id="txtAge" class="search-query input-sm" />
+                <a href="#" class="btn btn-primary" data-bind="click:search">Search</a>
+                <a href="#" class="btn btn-default">reset</a>
+            </span>
+            <span class="pull-right">
+                <a href="#" class="btn btn-primary">Add</a>
+            </span>
+        </fieldset>
+    </div>
+    <div class="list" style="margin-top:10px;">
+        <table class="table table-condensed table-bordered table-hover table-striped">
+            <thead>
+                <tr>
+                    <th>name</th>
+                    <th>age</th>
+                </tr>
+            </thead>
+            <tbody data-bind="foreach:data">
+                <tr>
+                    <td><label data-bind="text:$data.Name"></label></td>
+                    <td><span data-bind="text:Age"></span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div style="text-align:center;">
+        <ul class="pagination" data-bind="foreach:PageNumbers">
+            <li data-bind="css: {selected: $index() == $root.pageIndex() - 1}">
+                <a href="#" data-bind="text: $data, click: $root.turnPage"></a>
+                <!--<a href="#" data-bind="text: $data, click: function(){$root.turnPage($data)}"></a>-->
+            </li>
+        </ul>
+    </div>
+    <script type="text/javascript">
+        var viewModel = function () {
+            var self = this;
+
+            //选中的排序字段
+            self.sortFiled = ko.observable('Name');
+
+            self.name = ko.observable('');//加''
+            self.age = ko.observable('');
+            self.pageIndex = ko.observable(1);
+            self.data = ko.observableArray();
+            self.PageNumbers = ko.observableArray();
+
+            self.turnPage = function (index) {
+                self.pageIndex(index);
+                self.doSearch();
+            };
+            self.search = function () {
+                self.pageIndex(1);
+                self.doSearch();
+            }
+
+
+            //查询和排序
+            self.doSearch = function () {
+                var apiParams = { "name": self.name(), "orderBy": self.sortFiled(), "age": self.age, "pageIndex": self.pageIndex() };
+                $.ajax({
+                    type: 'get',
+                    url: 'http://localhost:2843/api/TestApi/GetPage',
+                    data: apiParams,
+                    success: function (callBack) {
+                        self.PageNumbers.removeAll();
+                        for (var i = 1; i <= callBack.TotalPage; i++) {
+                            self.PageNumbers.push(i);
+                        }
+                        self.data(callBack.Data);
+                    }
+
+                });
+            };
+            // self = ko.mapping.fromJS(self);
+        }
+
+        $(function () {
+            var vm = new viewModel();
+            ko.applyBindings(vm);
+            vm.doSearch();
+            //订阅变化通知
+            vm.name.subscribe(function (newValue) {
+                vm.doSearch();
+            });
+
+        })
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+您 Web 项目的发布/打包进程将使用此文件。您可以通过编辑此 MSBuild 文件
+来自定义该进程的行为。若要了解与此相关的详细信息，请访问 http://go.microsoft.com/fwlink/?LinkID=208121。
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>E:\cts\Release</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="bin/JsoseTest.dll">
+      <publishTime>07/31/2014 14:19:45</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Web.Infrastructure.dll">
+      <publishTime>07/08/2013 15:15:08</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Web.Mvc.FixedDisplayModes.dll">
+      <publishTime>07/24/2014 10:51:10</publishTime>
+    </File>
+    <File Include="bin/Newtonsoft.Json.dll">
+      <publishTime>10/02/2013 12:10:10</publishTime>
+    </File>
+    <File Include="bin/System.Net.Http.Formatting.dll">
+      <publishTime>07/09/2013 11:04:28</publishTime>
+    </File>
+    <File Include="bin/System.Web.Helpers.dll">
+      <publishTime>07/09/2013 11:05:10</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.dll">
+      <publishTime>07/09/2013 11:04:28</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.WebHost.dll">
+      <publishTime>07/09/2013 11:04:28</publishTime>
+    </File>
+    <File Include="bin/System.Web.Mvc.dll">
+      <publishTime>07/09/2013 11:04:28</publishTime>
+    </File>
+    <File Include="bin/System.Web.Razor.dll">
+      <publishTime>07/09/2013 11:05:12</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Deployment.dll">
+      <publishTime>07/09/2013 11:05:12</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.dll">
+      <publishTime>07/09/2013 11:05:12</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Razor.dll">
+      <publishTime>07/09/2013 11:05:12</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Net.Http.Formatting.resources.dll">
+      <publishTime>07/09/2013 11:33:54</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.Helpers.resources.dll">
+      <publishTime>07/09/2013 11:36:02</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.Http.resources.dll">
+      <publishTime>07/09/2013 11:33:54</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.Http.WebHost.resources.dll">
+      <publishTime>07/09/2013 11:34:00</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.Mvc.resources.dll">
+      <publishTime>07/09/2013 11:34:00</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.Razor.resources.dll">
+      <publishTime>07/09/2013 11:35:48</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.WebPages.Deployment.resources.dll">
+      <publishTime>07/09/2013 11:36:04</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.WebPages.Razor.resources.dll">
+      <publishTime>07/09/2013 11:35:56</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.WebPages.resources.dll">
+      <publishTime>07/09/2013 11:35:56</publishTime>
+    </File>
+    <File Include="Content/login-key-icon.png">
+      <publishTime>07/24/2014 13:39:04</publishTime>
+    </File>
+    <File Include="Content/login-locked-icon.png">
+      <publishTime>07/24/2014 13:39:04</publishTime>
+    </File>
+    <File Include="Content/Loginleft.png">
+      <publishTime>07/24/2014 13:13:39</publishTime>
+    </File>
+    <File Include="Content/Member/logOn.css">
+      <publishTime>07/24/2014 13:59:21</publishTime>
+    </File>
+    <File Include="Global.asax">
+      <publishTime>07/24/2014 10:51:06</publishTime>
+    </File>
+    <File Include="js/jquery-1.8.2.js">
+      <publishTime>07/29/2014 10:25:35</publishTime>
+    </File>
+    <File Include="js/login-config.js">
+      <publishTime>07/24/2014 13:22:38</publishTime>
+    </File>
+    <File Include="js/require.js">
+      <publishTime>07/24/2014 13:26:42</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>07/24/2014 10:51:12</publishTime>
+    </File>
+    <File Include="Views/JsonPTest/GetByHC.cshtml">
+      <publishTime>07/29/2014 16:09:51</publishTime>
+    </File>
+    <File Include="Views/JsonPTest/Index.cshtml">
+      <publishTime>07/29/2014 15:50:43</publishTime>
+    </File>
+    <File Include="Views/TestHTML/Index.cshtml">
+      <publishTime>07/30/2014 16:27:43</publishTime>
+    </File>
+    <File Include="Views/Users/Index.cshtml">
+      <publishTime>07/29/2014 11:27:58</publishTime>
+    </File>
+    <File Include="Views/Web.config">
+      <publishTime>07/24/2014 10:51:06</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>07/31/2014 14:19:45</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

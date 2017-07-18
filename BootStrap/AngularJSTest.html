@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+   
+</head>
+<body ng-app="firstModule">
+    <div ng-controller="firstController">
+        <input type="text" ng-model="name" />
+        <span ng-bind-html="myHtml"></span>
+        <span ng-bind="name"></span>
+    </div>
+</body>
+</html>
+<script src="Scripts/angular.js"></script>
+<script type="text/javascript">
+    angular.module('firstModule', [])
+    .controller('firstController', ['$scope', '$sce', function ($scope, $sce) {
+        $scope.myHtml = $sce.trustAsHtml('<span>test1</span>');
+
+ }]);
+</script>

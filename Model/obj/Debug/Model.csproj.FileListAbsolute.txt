@@ -1,0 +1,9 @@
+E:\cts\project\Exerice\Model\bin\Debug\Model.dll
+E:\cts\project\Exerice\Model\bin\Debug\Model.pdb
+E:\cts\project\Exerice\Model\obj\Debug\Model.dll
+E:\cts\project\Exerice\Model\obj\Debug\Model.pdb
+E:\Study\Exerice\Model\bin\Debug\Model.dll
+E:\Study\Exerice\Model\bin\Debug\Model.pdb
+E:\Study\Exerice\Model\obj\Debug\Model.csprojResolveAssemblyReference.cache
+E:\Study\Exerice\Model\obj\Debug\Model.dll
+E:\Study\Exerice\Model\obj\Debug\Model.pdb

@@ -1,0 +1,8 @@
+﻿@model JsoseTest.Models.Product
+@{
+    ViewBag.Title = "HtmlControl";
+}
+
+<h2>HtmlControl</h2>
+<p style="width: 100px; overflow-x:hidden;"><span>@Model.Name</span>@Html.Raw(",")<span>@Model.Remark</span></p>
+

@@ -1,0 +1,78 @@
+﻿<div id="body">
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval");
+    @Scripts.Render("~/bundles/modernizr")
+    <script type="text/javascript">
+        //noAuth
+        //$(function () {
+        //    $.getJSON("http://localhost:2843/api/TestApi/", function (date) {
+        //        alert(JSON.stringify(date));
+        //    });
+        //})
+        $(function () {
+            var token = null;
+            var headers = {};
+            $("#btnToken").click(function () {
+                $.ajax(
+                {
+                    url: "http://localhost:2843/accesstoken",
+                    type: "post",
+                    data: { grant_type: "password", userName: "rranjan", password: "password@123", client_id: 'rajeev', client_secret:'secretKey'},
+                    async: false,
+                    success: function (data) {
+                        console.log(data);
+                        token = data.access_token;
+                    }
+                });
+            });
+
+            $("#btnGetAll").click(function () {
+                if (token) {
+                   headers.Authorization = 'Bearer ' + token;
+                }
+                $.ajax(
+                {
+                    url: "http://localhost:2843/api/TestApi/GetPage",
+                    type: "get",
+                    data:{"name":"t","orderBy":"name","age":12},
+                    headers:headers,
+                    success: function (data) {
+                        console.log(data);
+                    }
+                });
+
+            });
+        })
+
+    </script>
+    <section class="featured">
+        <div class="content-wrapper">
+            <input type="button" id="btnToken" value="GetToken"/>
+            <input type="button" id="btnGetAll" value="GetDataWithAuth"/>
+        </div>
+    </section>
+    <section class="content-wrapper main-content clear-fix">
+        <h3>We suggest the following steps:</h3>
+        <ol class="round">
+            <li class="one">
+                <h5>Getting Started</h5>
+                ASP.NET Web API is a framework that makes it easy to build HTTP services that reach
+                a broad range of clients, including browsers and mobile devices. ASP.NET Web API
+                is an ideal platform for building RESTful applications on the .NET Framework.
+                <a href="http://go.microsoft.com/fwlink/?LinkId=245160">Learn more…</a>
+            </li>
+
+            <li class="two">
+                <h5>Add NuGet packages and jump-start your coding</h5>
+                NuGet makes it easy to install and update free libraries and tools.
+                <a href="http://go.microsoft.com/fwlink/?LinkId=245161">Learn more…</a>
+            </li>
+            <li class="three">
+                <h5>Find Web Hosting</h5>
+                You can easily find a web hosting company that offers the right mix of features
+                and price for your applications.
+                <a href="http://go.microsoft.com/fwlink/?LinkId=245164">Learn more…</a>
+            </li>
+        </ol>
+    </section>
+</div>

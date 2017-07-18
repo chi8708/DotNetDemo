@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+内容:
+<input type="text" id="txtCode" />
+<input type="button" value="生成" id="btnSub" />
+@Html.AntiForgeryToken()
+<img id="qrcode" src="@Url.Action("Gener", new { text = "fff" })"/>
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $("#btnSub").click(function () {
+            var txt = $("#txtCode").val();
+            $("#qrcode").attr("src", "@Url.Action("Gener")?text=" + txt);
+         
+        });
+    })
+</script>

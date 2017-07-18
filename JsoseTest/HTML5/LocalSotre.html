@@ -1,0 +1,115 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <script src="../js/json2.js"></script><!--IE6-8不能使用JSON.stringif()-->
+    <script src="../js/jquery-1.8.2.js"></script>
+    <script src="../js/storage.js"></script>
+    <title></title>
+
+
+
+    <script type="text/javascript">
+
+       
+        window.onload = function () {
+            localStorage.setItem("a", "test");
+            $("#divMsg").data("jdata","jdatavalue");
+            //localStorage.removeItem("a");
+            var jsonData={"Id":1112,"Value":"Json"};
+            localStorage.setItem("json", JSON.stringify(jsonData));
+
+
+
+            //动态添加事件
+            var btnStorage = window.document.getElementById("btnStorage");
+            var divMsg = document.getElementById("divMsg");
+            //ie
+            if (btnStorage.attachEvent) {
+                btnStorage.attachEvent("onmouseover", function () {
+                    divMsg.innerHTML = "<strong>aaaa</strong>";
+                });
+            }
+            else {
+                //chrome、 firefox使用  注意事件名不要加on
+                if (typeof btnStorage.addEventListener != "undefined") {
+                    btnStorage.addEventListener("click", function () {
+                        divMsg.innerHTML = "<strong>aaaa333</strong>";
+                        alert("aaa1");
+                    }, false);
+                }
+            }
+        }
+        $(function () {
+            //jquery data
+            $.data(window, "data", {"key1":"value1"});
+            $("#btnData").click(function () {
+                alert($(window).data("data").key1);
+            });
+        })
+
+
+        function GetStorage() {
+             var localData= localStorage.getItem("a");
+            var jsonData = localStorage.getItem("json");
+            var data = JSON.parse(jsonData);
+            
+
+            alert(data.Id);
+            alert(localStorage.key(0));
+        }
+
+        $(function () {
+            $("#btnStorageExt").click(function () {
+            
+                localDataExt.set("jsonTest1", JSON.stringify({"key1":123, "key2": 456 }));
+                alert(window.JSON.parse(localDataExt.get("jsonTest1")).key1);
+                $("#divMsg").html("<strong>" + $.parseJSON(localDataExt.get("jsonTest1")).key1 + "</strong>");
+
+            });
+           
+        })
+
+        //class
+        $(function () {
+            $("#btnClass").click(function () {
+                var class1 = new TestClass();
+                class1.ShowName();
+                class1.ShowAge(12);
+
+                var class2 = new Class2();
+                class2.Show();
+            });
+        })
+
+        function TestClass() { };
+
+        TestClass.prototype = {
+            Age: 11,
+            ShowAge: function (age) {
+                this.Age = age;
+                alert(this.Age)
+            }
+        };
+
+        TestClass.prototype.Name = "ClassProtery";//如果要继续向原型中添加元素必须在.prototype ={}后添加;
+        TestClass.prototype.ShowName = function () { alert(this.Name) };
+
+        function Class2() {
+            this.Name = "Class2Protery";
+            this.Show = function () {
+                alert(this.Name);
+            }
+        };
+    </script>
+</head>
+<body>
+    <input type="button" id="btnStorage" value="GetLocalStorage" onclick="GetStorage(this)"/>
+    <input type="button" id="btnData"  value="GetJqueryData"/>
+    <input type="button" id="btnClass"  value="ClassTest" />
+    <input type="button" id="btnStorageExt" value="GetStoragerExt" />
+     <div id="divMsg"></div>
+    <div id='Loading' style="position:absolute;z-index:1000;top:0px;left:0px;width:100%;height:100%;background:#DDDDDB url('style/images/bodybg.jpg');text-align:center;padding-top: 20%;">
+    <h1><image src='style/images/loading.gif' /><font color="#15428B">加载中···</font></h1></div>
+</body>
+</html>

@@ -1,0 +1,40 @@
+﻿<html>
+<head>
+    <title>Awkward Viewline - Demo #1</title>
+    <link href="js/Viewline/css/style.css" rel="stylesheet" />
+    <script src="js/jquery-1.8.2.js"></script>
+    <script src="js/Viewline/jquery.viewline.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#viewline").viewline(
+            {
+                arrow_content: false,
+                vertical_align: false,
+                smart_width: true,
+                viewline_width: 0, /* 0 = window width (default) / Any int value */
+                auto_play: true,
+                interval: 4000,
+                pauseonover: true,
+                arrow_wrapper: null, /* null (default) / Any ID (#id) or Class (.class) */
+                animation: 'dropdown', /* dropdown (default) / popup / fade */
+                animation_in: 250,
+                animation_out: 150,
+                animation_delay: 300
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="viewline">
+        <div>
+           <a href="#"><img src="FSS/banner01.jpg" style="max-width:100%;" /></a> 
+        </div>
+        <div>
+            <img src="FSS/banner02.jpg" style="max-width:100%;" />
+        </div>
+        <div>
+            <img src="FSS/banner01.jpg" style="max-width:100%;" />
+        </div>
+    </div>
+</body>
+</html>

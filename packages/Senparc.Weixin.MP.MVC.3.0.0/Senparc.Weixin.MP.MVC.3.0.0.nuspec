@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>Senparc.Weixin.MP.MVC</id>
+    <version>3.0.0</version>
+    <authors>Jeffrey Su</authors>
+    <owners>Jeffrey Su</owners>
+    <licenseUrl>https://github.com/JeffreySu/WeiXinMPSDK/blob/master/license.md</licenseUrl>
+    <projectUrl>https://github.com/JeffreySu/WeiXinMPSDK</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>为了处理IOS微信软件下的换行bug，暂时添加了一个FixWeixinBugWeixinResult的返回类型暂时替代原来的WeixinResult。微信官方修复bug后此方法将删除。</description>
+    <releaseNotes>优化部分处理代码
+
+v2.0 重构Senparc.Weixin.dll代码
+
+v3.0 优化代码，完全兼容企业号和公众账号</releaseNotes>
+    <copyright />
+    <dependencies>
+      <dependency id="Microsoft.AspNet.Mvc" version="4.0.20505.0" />
+      <dependency id="Senparc.Weixin" version="1.4.0" />
+    </dependencies>
+  </metadata>
+</package>

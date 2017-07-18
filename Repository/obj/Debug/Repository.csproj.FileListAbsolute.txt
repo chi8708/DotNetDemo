@@ -1,0 +1,14 @@
+E:\cts\project\Exerice\Repository\bin\Debug\Repository.dll
+E:\cts\project\Exerice\Repository\bin\Debug\Repository.pdb
+E:\cts\project\Exerice\Repository\bin\Debug\Model.dll
+E:\cts\project\Exerice\Repository\bin\Debug\Model.pdb
+E:\cts\project\Exerice\Repository\obj\Debug\Repository.csprojResolveAssemblyReference.cache
+E:\cts\project\Exerice\Repository\obj\Debug\Repository.dll
+E:\cts\project\Exerice\Repository\obj\Debug\Repository.pdb
+E:\Study\Exerice\Repository\bin\Debug\Repository.dll
+E:\Study\Exerice\Repository\bin\Debug\Repository.pdb
+E:\Study\Exerice\Repository\bin\Debug\Model.dll
+E:\Study\Exerice\Repository\bin\Debug\Model.pdb
+E:\Study\Exerice\Repository\obj\Debug\Repository.csprojResolveAssemblyReference.cache
+E:\Study\Exerice\Repository\obj\Debug\Repository.dll
+E:\Study\Exerice\Repository\obj\Debug\Repository.pdb

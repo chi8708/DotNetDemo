@@ -1,0 +1,10 @@
+E:\cts\study\Exerice\ExpressionTree\bin\Debug\ExpressionTree.exe.config
+E:\cts\study\Exerice\ExpressionTree\bin\Debug\ExpressionTree.exe
+E:\cts\study\Exerice\ExpressionTree\bin\Debug\ExpressionTree.pdb
+E:\cts\study\Exerice\ExpressionTree\obj\Debug\ExpressionTree.exe
+E:\cts\study\Exerice\ExpressionTree\obj\Debug\ExpressionTree.pdb
+E:\Study\Exerice\ExpressionTree\bin\Debug\ExpressionTree.exe.config
+E:\Study\Exerice\ExpressionTree\obj\Debug\ExpressionTree.exe
+E:\Study\Exerice\ExpressionTree\obj\Debug\ExpressionTree.pdb
+E:\Study\Exerice\ExpressionTree\bin\Debug\ExpressionTree.exe
+E:\Study\Exerice\ExpressionTree\bin\Debug\ExpressionTree.pdb

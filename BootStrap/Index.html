@@ -1,0 +1,154 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+
+    <title></title>
+    <link href="BootStrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <script src="BootStrap/dist/js/jquery-2.1.3.min.js"></script>
+    <script src="BootStrap/dist/js/bootstrap.js"></script>
+    <style type="text/css">
+        div[class^="col-md"] {border:1px solid #808080; background-color:#ffd800}
+    </style>
+
+    <script type="text/javascript">
+
+    </script>
+
+</head>
+<body>
+    <span id="top"></span>
+    <a href="#bottom">向下</a>
+    <!--栅格-->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-1">test1</div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">test2</div>
+            <div class="col-md-1 col-md-offset-3">col-md-offset-3</div>
+        </div>
+        <div class="row">
+            <div class="col-md-9 col-md-push-3">.col-md-9 .col-md-push-3</div>
+            <div class="col-md-3 col-md-pull-9">.col-md-3 .col-md-pull-9</div>
+        </div>
+    </div>
+
+    <!-- Standard button -->
+<input type="button" class="btn btn-default" value="默认样式" />
+
+   <!--.btn-block 类可以将其拉伸至父元素100%的宽度，而且按钮也变为了块级（block）元素。-->
+ <input type="button"  class="btn-xs btn-primary btn-block" value="首选样式"/>
+
+    <!--h-->
+    <h1 class="text-success">h1. Bootstrap heading <small>Secondary text</small></h1>
+    <h2 class="text-center">h2. Bootstrap heading <small>Secondary text</small></h2>
+    <h5>h5. Bootstrap heading <small>Secondary text</small></h5>
+    <h6>h6. Bootstrap heading <small>Secondary text</small></h6>
+
+    <!--abbr 文本虚线-->
+
+    <abbr title="World Wide Web">WWW</abbr><br>
+    <abbr title="Real Simple Syndication" class="initialism">RSS</abbr>
+
+    <br />
+    <del>This line of text is meant to be treated as deleted text.</del>
+     highlight<mark>Mark</mark>
+    <u>This line of text will render as underlined</u>
+
+    <!--不加 table属性 table根据实际尺寸显示 table铺满屏幕-->
+        <table class="table table-condensed table-hover table-striped table-bordered" >
+            <tr>
+                <th class="success">测试</th>
+            </tr>
+            <tr>
+                <td class="warning">table-condensed 单元格中的内补（padding）均会减半</td>
+                <td>table-bordered添加边框</td>
+            </tr>
+            <tr class="danger">
+                <td>table-hover 鼠标经过的颜色</td>
+                <td>table-hover 鼠标经过的颜色</td>
+            </tr>
+            <tr>
+                <td>table-striped隔行变色</td>
+            </tr>
+            <tr>
+                <td>table-striped隔行变色</td>
+            </tr>
+            <tr>
+                <td>table-striped隔行变色</td>
+            </tr>
+        </table>
+
+    <!--1.所有的form-control类 width都会设置为100% ,可以通过width：atuo控制宽度。2.一定要添加 label 标签-->
+    <div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input type="password" class="form-control" style="width:auto;" id="exampleInputPassword1" placeholder="Password">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputFile">File input</label>
+            <input type="file" id="exampleInputFile">
+            <p class="help-block">Example block-level help text here.</p>
+        </div>
+    </div>
+    
+
+    <!--form inline 变为行内元素-->
+    <from class="form-inline">
+        <div class="form-group">
+            <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label><!--lable 已经没有作用了-->
+            <div class="input-group has-success"><!--has-success添加后会换行-->
+                <div class="input-group-addon">￥</div>
+                <input type="text" class="form-control" />
+                <div class="input-group-addon">.00</div>
+            </div>
+        </div>
+
+        <div>
+            <div class="input-group">
+                <div class="input-group-addon">￥</div>
+                <input type="text" class="form-control" placeholder=" disable" disabled="disabled" />
+                <div class="input-group-addon">.00</div>
+            </div>
+        </div>
+        <div>
+            <div class="col-md-10 input-group">
+
+            </div>
+        </div>
+        <!--如果需要在表单中将一行纯文本和 label 元素放置于同一行，为 <p>元素添加 .form-control-static 类即可。-->
+        <label>测试</label>
+        <p class="form-control-static">
+            p标签变为行内元素 纯文本
+        </p>
+
+        <select class="form-control">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+        </select>
+
+            <input type="button" class="btn btn-primary" value="提交" />
+</from>
+    <!--特殊符号-->
+    <br />
+    <button type="button" class="close" aria-label="Close" style="float:left;"><span aria-hidden="true">&times;</span></button>
+    <span class="caret"></span>
+
+    <a href="#top">向上</a>
+    <img id="bottom" src="Images/heroAccent.png"  style="margin-top:150px;"/>
+
+    <div role="navigation">
+        <ul class="nav  nav-tabs">
+            <li role="presentation" class="active"><a href="">Nav1</a></li>
+            <li role="presentation"><a href="">Nav2</a></li>
+        </ul>
+    </div>
+</body>
+</html>

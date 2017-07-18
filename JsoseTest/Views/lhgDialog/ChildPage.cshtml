@@ -1,0 +1,40 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ChildPage</title>
+    <script src="~/js/jquery-1.8.2.js"></script>
+    <script src="~/js/lhgdialog/lhgdialog.min.js"></script>
+</head>
+<body>
+    <div>
+        <input type="button"  value="dialogTest" onclick="showDialog()"/>
+    </div>
+    <script type="text/javascript">
+    function showDialog() {
+        var url = '/TestHtml/HtmlControl';
+        var dialog = $.dialog({
+            title: '聊天明细',
+            content: 'url:' + url,
+            height: 550,
+            lock: true,
+            width: 900,
+            close: function () {
+            },
+            button: [{
+                name: "关闭",
+                callback: function () {
+                    this.cancel = true;
+                }
+            }]
+
+        })
+    }
+    </script>
+</body>
+</html>
+

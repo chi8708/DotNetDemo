@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <script src="../js/jquery-1.10.2.js"></script>
+    <script src="../js/lhgdialog/lhgdialog.js"></script>
+
+    <script type="text/javascript" language="javascript">
+        function big(o) {
+            var zoom = parseInt(o.style.zoom, 10) || 100;
+            zoom += window.event.wheelDelta / 12;
+
+            if (zoom > 0) o.style.zoom = zoom + '%';
+
+            return false;
+        }
+
+        var dialog = null;
+        $(function () {
+            $("#btnPics").click(function () {
+                dialog = $.dialog({
+                    width:840,
+                    height:640,
+                    id: 'msg',
+                    title: '',
+                    content: 'url:index.html',
+                    fixed: true,
+                    drag: true,
+                    lock: true,
+                    resize: false
+                });
+
+            });
+        })
+    </script>
+</head>
+<body>
+    <img onload="javascript:if(this.width>498)this.style.width=498;"
+         src="./images/q1.jpg" onmousewheel="javascript:return big(this)" height="219" alt="" />
+
+    <input type="button" value="ShowPic" id="btnPics"/>
+</body>
+</html>

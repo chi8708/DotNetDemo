@@ -1,0 +1,42 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>JsonMappingHandler</title>
+
+    <script src="~/js/jquery-1.8.2.js"></script>
+    <script src="~/js/knockout-2.2.0.js"></script>
+    <script src="~/js/knockout.mapping.js"></script>
+</head>
+<body>
+    <div>
+        <p>
+            <label data-bind="text:name"></label>
+            <label data-bind="text:age"></label>
+        </p>
+        <p>
+            <input type="text" data-bind="value:name" />
+            <input type="text" data-bind="value:age" />
+        </p>
+    </div>
+
+    <script type="text/javascript">
+        $(function () {
+            $.post("GetAllMember", function (data) {
+
+               // var viewModel1 = data.first;
+                viewModel1=ko.mapping.fromJS(data.first);
+                ko.applyBindings(viewModel1);
+                //viewModel2.people.push({ name: "tom", age: 12 });
+            });
+
+        })
+
+    </script>
+</body>
+</html>

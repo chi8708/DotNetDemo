@@ -1,0 +1,99 @@
+﻿@model IList<JsoseTest.Models.Product>
+@{
+    ViewBag.Title = "Index";
+}
+<script src="~/js/jquery-1.8.2.js"></script>
+<style type="text/css">
+    #divTest {
+        height: 150px;
+        width: 150px;
+        background: url("/Content/login-key-icon.png") no-repeat 50px 40px;
+        background-position-y: 20px;
+        background-size: 20px 10px;
+        display: inline-block;
+    }
+</style>
+<div id="divheader" style="position:fixed;z-index:2;background-color:red;"></div>
+<div style="height:200px;"></div>
+@Html.Raw("<div style='color:red;'>TesthtmlRaw</div>")@Html.Raw(string.Format("{0}","testhtmlRaw"))
+@{
+    var hts = new HtmlString("111ss").ToString();
+ }
+@{
+    var mhs = new MvcHtmlString("111ss");
+    @Html.Raw("|");
+    @:<label>@@:test @Html.Raw(string.Format("ss"))</label>
+    
+}
+@mhs
+@hts
+<label>ssss</label>
+<div id="divTest" style="border:1px solid red">ssssssggggggggg</div>
+<dd>
+    <dl>
+        <dt>
+            <dfn>tttt</dfn>
+            <mark>mark</mark>
+        </dt>
+        <dd>ddddddd</dd>
+    </dl>
+</dd>
+<form method="post" action="#">
+    <input type="text" autofocus list="list" />
+    <datalist id="list">
+        <option>o1</option>
+        <option>o2</option>
+    </datalist>
+    <time tabindex="1" contenteditable="true">2013ss</time>
+    <input type="submit" />
+    <!--行内元素 height 不起作用-->
+    <span style="padding:20px 20px; height:150px; display:inline-block; margin:20px 20px; border:1px dotted #ff0000">行内元素测试</span>
+    <figure>
+        <figcaption>figureTest</figcaption>
+        sssss sssdd
+    </figure>
+
+    <div id="adv_forum_home_full" class="m t_c" >
+        <a href="#" rel="external nofollow" @Html.Raw("name=\"111\"") target="_blank"><embed src="/Content/1.swf" width="960" height="400" border="0" /></a>
+        <div class="b5"></div>
+    </div>
+
+    <a href="javascript:alert(222);">连接中调用</a>
+    <script language="javascript" type="text/javascript">
+        $(function () {
+            setTimeout("$('#adv_forum_home_full').slideUp(1000)", 2000);
+            stringTest();
+            
+        });
+        
+        $(function () {
+            $.ajax({
+                type: "post",
+                url: "/TestHTML/HtmlControl",
+                data: "html",
+                success: function (data) {
+                    $("#divheader").html(data);
+                }
+            });
+            
+        })
+
+        //字符串函数
+        function stringTest() {
+
+            var str = "1s2o";
+
+            var rStr = str.replace(/\d/g, "e"); //g表示全局标量，如果不添加，则替换比配的第一个。
+            //alert(rStr);
+
+        }
+    </script>
+    
+    @foreach (var item in Model)
+    {
+        @Html.DropDownList("status",(ViewData["DDL"] as List<SelectListItem>))
+    }
+
+</form>
+
+

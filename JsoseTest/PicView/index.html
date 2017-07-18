@@ -1,0 +1,193 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+    <meta name="keywords" content="JS代码,相册代码,JS广告代码,JS特效代码" />
+    <meta name="description" content="此代码内容为可自动播放和暂停的jQuery相册代码，属于站长常用代码，更多相册代码代码请访问懒人图库JS代码频道。" />
+    <title>可自动播放和暂停的jQuery相册代码_懒人图库</title>
+
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="js/jquery.timers-1.2.js"></script>
+    <!--<script type="text/javascript" src="js/jquery.easing.1.3.js"></script>-->
+    <script type="text/javascript" src="js/jquery.galleryview-3.0-dev.js"></script>
+
+    <link type="text/css" rel="stylesheet" href="css/jquery.galleryview-3.0-dev.css" />
+    <style type="text/css">
+        /*模块拖拽*/
+        .drag {
+            position: relative;
+            text-align: center;
+            padding: 5px;
+            top: 5px;
+            left: 5px;
+            cursor: move;
+            width: 800px;
+            margin: 0 auto;
+        }
+
+        /*遮罩层*/
+        .module {
+            width: 100%;
+            height: 100%;
+            background-color: #808080;
+            display: none;
+            position: fixed;
+            left:0;
+            top: 0;
+            filter: alpha(opacity=50); /*IE滤镜，透明度50%*/
+            -moz-opacity: 0.5; /*Firefox私有，透明度50%*/
+            opacity: 0.5; /*其他，透明度50%*/
+        }
+        .module p {
+            margin: 0px;
+        }
+
+        .btnCancle {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+    </style>
+
+</head>
+<body>
+    <!--cts add-->
+    <p>
+        <input type="button" value="ShowPic" id="btnPic" />
+    </p>
+    <div class="module" style="">
+        <p style="text-align:right"><input type="button" value="×" id="btnCancle"  class="btnCancle"/> </p>
+    </div>
+    <!-- 代码 开始 -->
+    <div id="reSizePic" style="clear:both;" class="drag">
+        <ul id="myGallery">
+            <li>
+                <img src="images/q1.jpg" alt="Lone Tree Yellowstone" />
+            </li>
+            <li>
+                <img src="images/bp2.jpg" alt="Is He Still There?!" />
+            </li>
+            <li>
+                <img src="images/bp4.jpg" alt="Noni Nectar For Green Gecko" />
+            </li>
+            <li>
+                <img src="images/bp7.jpg" alt="Flight of an Eagle Owl" />
+            </li>
+            <li>
+                <img src="images/bp14.jpg" alt="Winter Lollipops" />
+            </li>
+            <li>
+                <img src="images/bp26.jpg" alt="Day of Youth" />
+            </li>
+            <li>
+                <img src="images/bp27.jpg" alt="Sunbathing Underwater" />
+            </li>
+            <li>
+                <img src="images/bp28.jpg" alt="Untitled" />
+            </li>
+            <li>
+                <img src="images/bp41.jpg" alt="New Orleans Streetcar" />
+            </li>
+            <li>
+                <img src="images/bp49.jpg" alt="By The Wind of Chance" />
+            </li>
+            <li>
+                <img src="images/bp52.jpg" alt="Fishing on the Cloud" />
+            </li>
+            <li>
+                <img src="images/bp53.jpg" alt="Blue Lagoon" />
+            </li>
+            <li>
+                <img src="images/bp54.jpg" alt="Time" />
+            </li>
+        </ul>
+    </div>
+
+    <script type="text/javascript">
+        $(function () {
+           
+            //缩放
+            $('#reSizePic').on("mousewheel", function () {
+                return big(this);
+            });
+        });
+
+        //图片缩放
+        function big(o) {
+            var zoom = parseInt(o.style.zoom, 10) || 100;
+            zoom += window.event.wheelDelta / 12;
+
+            if (zoom > 0) o.style.zoom = zoom + '%';
+
+            // reSetParentDialog(zoom);//ctsAdd;
+            return false;
+        }
+
+        //重置父级dialog
+        function reSetParentDialog(zoom) {
+            zoom = zoom / 100;
+            var dialog = window.parent.dialog;
+            var dWidth = dialog.config.width;
+            var dHeight = dialog.config.height;
+
+            dialog.size(dWidth * zoom, dHeight * zoom);
+        }
+
+        // 模块拖拽
+        $(function () {
+            var _move = false;//移动标记
+            var _x, _y;//鼠标离控件左上角的相对位置
+            $(".drag").click(function () {
+                //alert("click");//点击（松开后触发）
+            }).mousedown(function (e) {
+                _move = true;
+                _x = e.pageX - parseInt($(".drag").css("left"));
+                _y = e.pageY - parseInt($(".drag").css("top"));
+                $(".drag").fadeTo(20, 0.5);//点击后开始拖动并透明显示
+            });
+            $(document).mousemove(function (e) {
+                if (_move) {
+                    var x = e.pageX - _x;//移动时根据鼠标位置计算控件左上角的绝对位置
+                    var y = e.pageY - _y;
+                    $(".drag").css({ top: y, left: x });//控件新位置
+                }
+            }).mouseup(function () {
+                if ($(".drag").is(":hidden")) {
+                    return;
+                }
+                _move = false;
+                $(".drag").fadeTo("fast", 1);//松开鼠标后停止移动并恢复成不透明
+            });
+        });
+
+        $(function () {
+            $("#reSizePic").hide();
+
+            $("#btnPic").click(function () {
+
+                //相册
+                $('#myGallery').galleryView();
+
+                $(".gv_galleryWrap").css("left", "0");
+
+
+                $(".module").show();
+                $("#reSizePic").show();
+            });
+
+            $("#btnCancle").click(function () {
+                $(".module").hide();
+                $("#reSizePic").hide();
+            })
+        })
+    </script>
+    <!-- 代码 结束 -->
+    <style>
+        /*非必要代码*/
+        .gv_galleryWrap {
+            left: 20%;
+        }
+    </style>
+</body>
+</html>
