@@ -8,12 +8,12 @@ using System.Web.Mvc;
 namespace JsoseTest.Controllers
 {
     //单例模式
-    public class SignalInstanceController : Controller
+    public  class SignalInstanceController : Controller
     {
         //
         // GET: /SignalInstance/
-
-        public ActionResult Index()
+        private static int testConst=1;
+        public  ActionResult Index()
         {
             Signal data = null;
 
@@ -22,13 +22,17 @@ namespace JsoseTest.Controllers
                 data = Signal.SignalInstance3;
             }
 
-          
+            staticMethod(testConst);
            
             string str= People.str;
            string str2 = People.str;
             return View();
         }
 
+        private static int staticMethod(int a)
+        {
+           return a;
+        }
 
 
     }
