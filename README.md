@@ -1,7 +1,7 @@
 # DotNetDemo
 ### .net练习、测试
 
-1.BasicTest→ ConcurrentQueue<T>异步集合。
+1.**BasicTest** → ConcurrentQueue<T>异步集合。
 
 2.BootStrap→ BootStrap、AngularJS、knockout。
 
