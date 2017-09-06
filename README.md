@@ -20,3 +20,5 @@
 9.**MvcApiSelfHost**→webApi脱离IIS，自定义控制台作为宿主。
 
 10.**QRCoderDemo**→开源QRCoder二维码生成使用。
+
+11.**GemmyTest**→图像合并
