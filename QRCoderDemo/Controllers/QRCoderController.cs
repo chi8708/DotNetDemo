@@ -43,5 +43,8 @@ namespace QRCoderDemo.Controllers
             qrCodeImage.Save(Response.OutputStream, System.Drawing.Imaging.ImageFormat.Jpeg); ;
         }
 
+
+
+
 	}
 }

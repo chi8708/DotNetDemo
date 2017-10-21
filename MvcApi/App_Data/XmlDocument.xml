@@ -535,6 +535,13 @@
             </summary>
             <param name="documentPath">The physical path to XML document.</param>
         </member>
+        <member name="M:MvcApi.Controllers.FileServerController.Posthead(System.Int32)">
+            <summary>
+            上传用户头像（只能传jpg图
+            </summary>
+            <param name="EID"></param>
+            <returns></returns>
+        </member>
         <member name="T:MvcApi.Controllers.TestApiController">
             <summary>
             测试Api
