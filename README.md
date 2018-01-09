@@ -21,4 +21,4 @@
 
 10.**QRCoderDemo**→开源QRCoder二维码生成使用。
 
-11.**GemmyTest**→图像合并
+11.**GemmyTest**→图像合并、Redis使用
