@@ -41,6 +41,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="QRCoder">
       <HintPath>..\lib\QRCoder.dll</HintPath>
     </Reference>
@@ -121,6 +125,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\QRCodeController.cs" />
     <Compile Include="Controllers\RedisTestController.cs" />
+    <Compile Include="Controllers\SETestController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -135,10 +140,14 @@
     <Compile Include="RedisUtil\RedisBase.cs" />
     <Compile Include="RedisUtil\RedisConfig.cs" />
     <Compile Include="RedisUtil\RedisManager.cs" />
+    <Compile Include="StackExchange\RedisConnectionHelper.cs" />
+    <Compile Include="StackExchange\RedisHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
-    <Content Include="packages.config" />
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -151,6 +160,7 @@
     <Folder Include="Content\" />
     <Folder Include="Models\" />
     <Folder Include="Views\RedisTest\" />
+    <Folder Include="Views\SETest\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
