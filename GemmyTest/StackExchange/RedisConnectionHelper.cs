@@ -19,7 +19,7 @@ namespace RedisHelp
         private static readonly object Locker = new object();
         private static ConnectionMultiplexer _instance;
         private static readonly ConcurrentDictionary<string, ConnectionMultiplexer> ConnectionCache = new ConcurrentDictionary<string, ConnectionMultiplexer>();
-
+       
         /// <summary>
         /// 单例获取
         /// </summary>

@@ -277,6 +277,19 @@ namespace RedisHelp
             });
         }
 
+          /// <summary>
+         /// Redis散列数据类型  批量新增
+         /// </summary>
+         public bool HashSet(string key, List<HashEntry> hashEntrys, CommandFlags flags = CommandFlags.None)
+        {
+            return Do(db =>
+            {
+                db.HashSet(key, hashEntrys.ToArray(), flags);
+                return true;
+            });
+           
+          }
+
         /// <summary>
         /// 移除hash中的某值
         /// </summary>
@@ -893,12 +906,12 @@ namespace RedisHelp
 
         public ITransaction CreateTransaction()
         {
-            return GetDatabase().CreateTransaction();
+            return GetDatabase(null).CreateTransaction();
         }
 
-        public IDatabase GetDatabase()
+        public IDatabase GetDatabase(int? dbNum)
         {
-            return _conn.GetDatabase(DbNum);
+            return _conn.GetDatabase(dbNum.HasValue?(int)dbNum:DbNum);
         }
 
         public IServer GetServer(string hostAndPort)
@@ -921,6 +934,7 @@ namespace RedisHelp
 
         private string AddSysCustomKey(string oldKey)
         {
+            
             var prefixKey = CustomKey ?? RedisConnectionHelper.SysCustomKey;
             return prefixKey + oldKey;
         }
