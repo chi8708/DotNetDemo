@@ -88,7 +88,7 @@ namespace RedisHelp
         /// <summary>
         /// redis日志写入
         /// </summary>
-        private static void WrtieRedisLog(LogLevel logLevel, string message)
+        public static void WrtieRedisLog(LogLevel logLevel, string message)
         {
             LogHelper m_Log = LogFactory.GetLogger(LogType.RedisLog);
             switch (logLevel)

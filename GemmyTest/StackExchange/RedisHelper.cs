@@ -941,8 +941,18 @@ namespace RedisHelp
 
         private T Do<T>(Func<IDatabase, T> func)
         {
-            var database = _conn.GetDatabase(DbNum);
-            return func(database);
+            try
+            {
+                var database = _conn.GetDatabase(DbNum);
+                return func(database);
+            }
+            catch (Exception ex)
+            {
+                Task.Run(()=>RedisConnectionHelper.WrtieRedisLog(Common.LogLevel.Error, ex.Message));
+                throw ex;
+            }
+
+
         }
 
         private string ConvertJson<T>(T value)
