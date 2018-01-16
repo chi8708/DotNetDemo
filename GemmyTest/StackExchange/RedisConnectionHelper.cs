@@ -1,7 +1,9 @@
-﻿using StackExchange.Redis;
+﻿using Common;
+using StackExchange.Redis;
 using System;
 using System.Collections.Concurrent;
 using System.Configuration;
+using System.Threading.Tasks;
 
 namespace RedisHelp
 {
@@ -57,22 +59,58 @@ namespace RedisHelp
 
         private static ConnectionMultiplexer GetManager(string connectionString = null)
         {
+
             connectionString = connectionString ?? RedisConnectionString;
-            var connect = ConnectionMultiplexer.Connect(connectionString);
+            try
+            {
 
-            //注册如下事件
-            connect.ConnectionFailed += MuxerConnectionFailed;
-            connect.ConnectionRestored += MuxerConnectionRestored;
-            connect.ErrorMessage += MuxerErrorMessage;
-            connect.ConfigurationChanged += MuxerConfigurationChanged;
-            connect.HashSlotMoved += MuxerHashSlotMoved;
-            connect.InternalError += MuxerInternalError;
+                var connect = ConnectionMultiplexer.Connect(connectionString);
+                //注册如下事件
+                connect.ConnectionFailed += MuxerConnectionFailed;
+                connect.ConnectionRestored += MuxerConnectionRestored;
+                connect.ErrorMessage += MuxerErrorMessage;
+                connect.ConfigurationChanged += MuxerConfigurationChanged;
+                connect.HashSlotMoved += MuxerHashSlotMoved;
+                connect.InternalError += MuxerInternalError;
+    
+                return connect;
 
-            return connect;
+            }
+            catch (Exception ex)
+            {
+                Task.Run(() => WrtieRedisLog(LogLevel.Error, "redis初始化错误 GetManager: " + ex.Message));
+                throw new Exception(ex.Message);
+            }
+
+
+        }
+
+        /// <summary>
+        /// redis日志写入
+        /// </summary>
+        private static void WrtieRedisLog(LogLevel logLevel, string message)
+        {
+            LogHelper m_Log = LogFactory.GetLogger(LogType.RedisLog);
+            switch (logLevel)
+            {
+                case LogLevel.Debug:
+                    m_Log.Debug(message);
+                    break;
+                case LogLevel.Error:
+                    m_Log.Error(message);
+                    break;
+                case LogLevel.Info:
+                    m_Log.Info(message);
+                    break;
+                case LogLevel.Warning:
+                    m_Log.Warning(message);
+                    break;
+            }
         }
 
         #region 事件
 
+      
         /// <summary>
         /// 配置更改时
         /// </summary>
@@ -80,7 +118,8 @@ namespace RedisHelp
         /// <param name="e"></param>
         private static void MuxerConfigurationChanged(object sender, EndPointEventArgs e)
         {
-            Console.WriteLine("Configuration changed: " + e.EndPoint);
+            Task.Run(() => WrtieRedisLog(LogLevel.Warning, "Configuration changed: " + e.EndPoint));
+           // Console.WriteLine("Configuration changed: " + e.EndPoint);
         }
 
         /// <summary>
@@ -90,17 +129,20 @@ namespace RedisHelp
         /// <param name="e"></param>
         private static void MuxerErrorMessage(object sender, RedisErrorEventArgs e)
         {
-            Console.WriteLine("ErrorMessage: " + e.Message);
+            Task.Run(() => WrtieRedisLog(LogLevel.Error, "ErrorMessage: " + e.Message));
+
+           // Console.WriteLine("ErrorMessage: " + e.Message);
         }
 
         /// <summary>
-        /// 重新建立连接之前的错误
+        /// 重新建立连接之前
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private static void MuxerConnectionRestored(object sender, ConnectionFailedEventArgs e)
         {
-            Console.WriteLine("ConnectionRestored: " + e.EndPoint);
+            Task.Run(() => WrtieRedisLog(LogLevel.Warning, "ConnectionRestored: " + e.EndPoint));
+           // Console.WriteLine("ConnectionRestored: " + e.EndPoint);
         }
 
         /// <summary>
@@ -110,7 +152,9 @@ namespace RedisHelp
         /// <param name="e"></param>
         private static void MuxerConnectionFailed(object sender, ConnectionFailedEventArgs e)
         {
-            Console.WriteLine("重新连接：Endpoint failed: " + e.EndPoint + ", " + e.FailureType + (e.Exception == null ? "" : (", " + e.Exception.Message)));
+           string msg="重新连接：Endpoint failed: " + e.EndPoint + ", " + e.FailureType + (e.Exception == null ? "" : (", " + e.Exception.Message));
+           Task.Run(() => WrtieRedisLog(LogLevel.Error, msg));
+           // Console.WriteLine("重新连接：Endpoint failed: " + e.EndPoint + ", " + e.FailureType + (e.Exception == null ? "" : (", " + e.Exception.Message)));
         }
 
         /// <summary>
@@ -120,7 +164,9 @@ namespace RedisHelp
         /// <param name="e"></param>
         private static void MuxerHashSlotMoved(object sender, HashSlotMovedEventArgs e)
         {
-            Console.WriteLine("HashSlotMoved:NewEndPoint" + e.NewEndPoint + ", OldEndPoint" + e.OldEndPoint);
+
+            Task.Run(() => WrtieRedisLog(LogLevel.Info,"HashSlotMoved:NewEndPoint" + e.NewEndPoint + ", OldEndPoint" + e.OldEndPoint));
+          //  Console.WriteLine("HashSlotMoved:NewEndPoint" + e.NewEndPoint + ", OldEndPoint" + e.OldEndPoint);
         }
 
         /// <summary>
@@ -130,7 +176,9 @@ namespace RedisHelp
         /// <param name="e"></param>
         private static void MuxerInternalError(object sender, InternalErrorEventArgs e)
         {
-            Console.WriteLine("InternalError:Message" + e.Exception.Message);
+
+            Task.Run(() => WrtieRedisLog(LogLevel.Error, "InternalError:Message" + e.Exception.Message));
+          //  Console.WriteLine("InternalError:Message" + e.Exception.Message);
         }
 
         #endregion 事件

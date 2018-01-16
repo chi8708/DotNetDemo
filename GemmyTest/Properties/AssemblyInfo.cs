@@ -31,5 +31,6 @@ using System.Runtime.InteropServices;
 //
 // 可以指定所有值，也可以使用“修订号”和“内部版本号”的默认值，
 // 方法是按如下所示使用 "*":
+[assembly: log4net.Config.XmlConfigurator(ConfigFile = "log4net.config", Watch = true)]
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]

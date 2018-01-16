@@ -906,12 +906,12 @@ namespace RedisHelp
 
         public ITransaction CreateTransaction()
         {
-            return GetDatabase(null).CreateTransaction();
+            return GetDatabase().CreateTransaction();
         }
 
-        public IDatabase GetDatabase(int? dbNum)
+        public IDatabase GetDatabase()
         {
-            return _conn.GetDatabase(dbNum.HasValue?(int)dbNum:DbNum);
+            return _conn.GetDatabase(DbNum);
         }
 
         public IServer GetServer(string hostAndPort)
