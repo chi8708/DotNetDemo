@@ -141,7 +141,7 @@ namespace RedisHelp
         /// <param name="e"></param>
         private static void MuxerConnectionRestored(object sender, ConnectionFailedEventArgs e)
         {
-            Task.Run(() => WrtieRedisLog(LogLevel.Warning, "ConnectionRestored: " + e.EndPoint));
+            Task.Run(() => WrtieRedisLog(LogLevel.Warning, "ConnectionRestored 启用成功: " + e.EndPoint));
            // Console.WriteLine("ConnectionRestored: " + e.EndPoint);
         }
 
