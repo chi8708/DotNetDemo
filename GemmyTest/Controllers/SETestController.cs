@@ -102,14 +102,14 @@ namespace GemmyTest.Controllers
 
             #region 发布订阅
 
-            redis.Subscribe("Channel1");
-            for (int i = 0; i < 10; i++)
+            //redis.Subscribe("Channel1");
+            for (int i = 0; i < 1000; i++)
             {
                 redis.Publish("Channel1", "msg" + i);
-                if (i == 2)
-                {
-                    redis.Unsubscribe("Channel1");
-                }
+                //if (i == 2)
+                //{
+                //    redis.Unsubscribe("Channel1");
+                //}
             }
 
             #endregion 发布订阅
