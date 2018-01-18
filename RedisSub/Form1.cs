@@ -16,6 +16,7 @@ namespace RedisSub
     public partial class Form1 : Form
     {
         RedisHelper redis = new RedisHelper(2);
+        bool subState = false;
         public Form1()
         {
             InitializeComponent();
@@ -24,14 +25,35 @@ namespace RedisSub
 
         private void btnsub_Click(object sender, EventArgs e)
         {
-            this.btnsub.Enabled = false;
-            Task.Run(() => StartSub());
+            if (!subState)
+            {
+                Task.Run(() => StartSub());
+
+                this.btnsub.ForeColor = System.Drawing.Color.Green;
+                this.btnsub.Text = "订阅中...";
+            }
+            else
+            {
+                Task.Run(() => StopSub());
+                this.btnsub.ForeColor = System.Drawing.Color.Black;
+                this.btnsub.Text = "订阅开始";
+                
+            }
+
+
         }
 
         //开始订阅
         private void StartSub()
         {
+            subState = true;
             redis.Subscribe("Channel1", (channel,message) => SubHandler(channel,message));
+        }
+        //取消订阅
+        private void StopSub()
+        {
+            subState = false;
+            redis.Unsubscribe("Channel1");
         }
 
         private void SubHandler(RedisChannel channel,RedisValue message) 

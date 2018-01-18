@@ -708,6 +708,102 @@ namespace RedisHelp
 
         #endregion List
 
+        #region Set 集合
+
+        #region 同步方法
+
+        /// <summary>
+        /// 添加
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="value"></param>
+        /// <param name="score"></param>
+        public bool SetAdd<T>(string key, T value, CommandFlags flags = CommandFlags.None)
+        {
+            key = AddSysCustomKey(key);
+            return Do(redis => redis.SetAdd(key,ConvertJson<T>(value), flags));
+        }
+
+        /// <summary>
+        /// 删除
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="value"></param>
+        public bool SetRemove<T>(string key, T value)
+        {
+            key = AddSysCustomKey(key);
+            return Do(redis => redis.SetRemove(key, ConvertJson(value)));
+        }
+
+        /// <summary>
+        /// 获取全部
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        public List<T> SetScan<T>(string key)
+        {
+            key = AddSysCustomKey(key);
+            return Do(redis =>
+            {
+                var values = redis.SetScan(key).ToArray();
+                return ConvetList<T>(values);
+            });
+        }
+
+        /// <summary>
+        /// 获取集合中的数量
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        public long SetLength(string key)
+        {
+            key = AddSysCustomKey(key);
+            return Do(redis => redis.SetLength(key));
+        }
+
+        #endregion 同步方法
+
+        #region 异步方法
+
+        /// <summary>
+        /// 添加
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="value"></param>
+        /// <param name="score"></param>
+        public async Task<bool> SetAddAsync<T>(string key, T value, CommandFlags flags = CommandFlags.None)
+        {
+            key = AddSysCustomKey(key);
+            return await Do(redis => redis.SetAddAsync(key, ConvertJson<T>(value), flags));
+        }
+
+        /// <summary>
+        /// 删除
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="value"></param>
+        public async Task<bool> SetRemoveAsync<T>(string key, T value)
+        {
+            key = AddSysCustomKey(key);
+            return await Do(redis => redis.SetRemoveAsync(key, ConvertJson(value)));
+        }
+
+
+        /// <summary>
+        /// 获取集合中的数量
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        public async Task<long> SetLengthAsync(string key)
+        {
+            key = AddSysCustomKey(key);
+            return await Do(redis => redis.SetLengthAsync(key));
+        }
+
+        #endregion 异步方法
+
+        #endregion SortedSet 有序集合
+
         #region SortedSet 有序集合
 
         #region 同步方法

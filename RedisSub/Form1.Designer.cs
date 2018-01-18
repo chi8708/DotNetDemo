@@ -33,9 +33,9 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnClear = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.lbNum = new System.Windows.Forms.Label();
-            this.lbnumtip = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.lbnumtip = new System.Windows.Forms.Label();
+            this.lbNum = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -60,7 +60,7 @@
             this.lbMessage.ItemHeight = 12;
             this.lbMessage.Location = new System.Drawing.Point(3, 0);
             this.lbMessage.Name = "lbMessage";
-            this.lbMessage.Size = new System.Drawing.Size(328, 196);
+            this.lbMessage.Size = new System.Drawing.Size(357, 232);
             this.lbMessage.TabIndex = 1;
             // 
             // panel1
@@ -70,7 +70,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(334, 59);
+            this.panel1.Size = new System.Drawing.Size(363, 59);
             this.panel1.TabIndex = 2;
             // 
             // btnClear
@@ -90,26 +90,8 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 59);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(334, 236);
+            this.panel2.Size = new System.Drawing.Size(363, 275);
             this.panel2.TabIndex = 3;
-            // 
-            // lbNum
-            // 
-            this.lbNum.AutoSize = true;
-            this.lbNum.Location = new System.Drawing.Point(82, 12);
-            this.lbNum.Name = "lbNum";
-            this.lbNum.Size = new System.Drawing.Size(11, 12);
-            this.lbNum.TabIndex = 3;
-            this.lbNum.Text = "0";
-            // 
-            // lbnumtip
-            // 
-            this.lbnumtip.AutoSize = true;
-            this.lbnumtip.Location = new System.Drawing.Point(11, 11);
-            this.lbnumtip.Name = "lbnumtip";
-            this.lbnumtip.Size = new System.Drawing.Size(65, 12);
-            this.lbnumtip.TabIndex = 2;
-            this.lbnumtip.Text = "已接受数量";
             // 
             // panel3
             // 
@@ -117,16 +99,34 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel3.Controls.Add(this.lbnumtip);
             this.panel3.Controls.Add(this.lbNum);
-            this.panel3.Location = new System.Drawing.Point(3, 202);
+            this.panel3.Location = new System.Drawing.Point(3, 238);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(319, 34);
+            this.panel3.Size = new System.Drawing.Size(348, 37);
             this.panel3.TabIndex = 4;
+            // 
+            // lbnumtip
+            // 
+            this.lbnumtip.AutoSize = true;
+            this.lbnumtip.Location = new System.Drawing.Point(12, 14);
+            this.lbnumtip.Name = "lbnumtip";
+            this.lbnumtip.Size = new System.Drawing.Size(65, 12);
+            this.lbnumtip.TabIndex = 2;
+            this.lbnumtip.Text = "已接受数量";
+            // 
+            // lbNum
+            // 
+            this.lbNum.AutoSize = true;
+            this.lbNum.Location = new System.Drawing.Point(82, 15);
+            this.lbNum.Name = "lbNum";
+            this.lbNum.Size = new System.Drawing.Size(11, 12);
+            this.lbNum.TabIndex = 3;
+            this.lbNum.Text = "0";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(334, 295);
+            this.ClientSize = new System.Drawing.Size(363, 334);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "Form1";
