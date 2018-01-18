@@ -100,6 +100,16 @@ namespace GemmyTest.Controllers
 
             #endregion Hash
 
+            #region Set
+            redis.SetAdd("sort1", "ddd");
+            redis.SetAdd("sort1", "fffff");
+            var r=  redis.SetContains("sort1", "ddd");
+            var sorts= redis.SetMembers<object>("sort1");
+            foreach (var item in sorts)
+            {
+                var v = item.ToString();
+            }
+            #endregion
             #region 发布订阅
 
             //redis.Subscribe("Channel1");

@@ -374,6 +374,37 @@ namespace RedisHelp
             });
         }
 
+        /// <summary>
+        /// 获取hashkey所有Redis Values
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        public List<T> HashValues<T>(string key)
+        {
+            key = AddSysCustomKey(key);
+            return Do(db =>
+            {
+                RedisValue[] values = db.HashValues(key);
+                return ConvetList<T>(values);
+            });
+        }
+
+        /// <summary>
+        /// 获取hashkey所有Redis 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        public HashEntry[] HashGetAll<T>(string key)
+        {
+            key = AddSysCustomKey(key);
+            return Do(db =>
+            {
+                HashEntry[] values = db.HashGetAll(key);
+                return values;
+            });
+        }
         #endregion 同步方法
 
         #region 异步方法
@@ -677,6 +708,114 @@ namespace RedisHelp
 
         #endregion List
 
+        #region Set 集合
+
+        #region 同步方法
+
+        /// <summary>
+        /// 添加
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="value"></param>
+        /// <param name="score"></param>
+        public bool SetAdd<T>(string key, T value, CommandFlags flags = CommandFlags.None)
+        {
+            key = AddSysCustomKey(key);
+            return Do(redis => redis.SetAdd(key,ConvertJson<T>(value), flags));
+        }
+
+        /// <summary>
+        /// 删除
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="value"></param>
+        public bool SetRemove<T>(string key, T value)
+        {
+            key = AddSysCustomKey(key);
+            return Do(redis => redis.SetRemove(key, ConvertJson(value)));
+        }
+
+        /// <summary>
+        /// 获取全部
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        public RedisValue[] SetMembers<T>(string key)
+        {
+            key = AddSysCustomKey(key);
+            return Do(redis =>
+            {
+                var values = redis.SetMembers(key);
+                return values;
+            });
+        }
+
+        /// <summary>
+        /// 获取集合中的数量
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        public long SetLength(string key)
+        {
+            key = AddSysCustomKey(key);
+            return Do(redis => redis.SetLength(key));
+        }
+
+        /// <summary>
+        /// 判断set的某个value是否存在
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public bool SetContains(string key, string value,CommandFlags flags = CommandFlags.None) 
+        {
+            key = AddSysCustomKey(key);
+            return Do(redis => redis.SetContains(key,value));
+        }
+
+        #endregion 同步方法
+
+        #region 异步方法
+
+        /// <summary>
+        /// 添加
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="value"></param>
+        /// <param name="score"></param>
+        public async Task<bool> SetAddAsync<T>(string key, T value, CommandFlags flags = CommandFlags.None)
+        {
+            key = AddSysCustomKey(key);
+            return await Do(redis => redis.SetAddAsync(key, ConvertJson<T>(value), flags));
+        }
+
+        /// <summary>
+        /// 删除
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="value"></param>
+        public async Task<bool> SetRemoveAsync<T>(string key, T value)
+        {
+            key = AddSysCustomKey(key);
+            return await Do(redis => redis.SetRemoveAsync(key, ConvertJson(value)));
+        }
+
+
+        /// <summary>
+        /// 获取集合中的数量
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        public async Task<long> SetLengthAsync(string key)
+        {
+            key = AddSysCustomKey(key);
+            return await Do(redis => redis.SetLengthAsync(key));
+        }
+
+        #endregion 异步方法
+
+        #endregion SortedSet 有序集合
+
         #region SortedSet 有序集合
 
         #region 同步方法
@@ -847,6 +986,7 @@ namespace RedisHelp
 
         #region 发布订阅
 
+        #region  同步方法
         /// <summary>
         /// Redis发布订阅  订阅
         /// </summary>
@@ -881,6 +1021,8 @@ namespace RedisHelp
             return sub.Publish(channel, ConvertJson(msg));
         }
 
+
+
         /// <summary>
         /// Redis发布订阅  取消订阅
         /// </summary>
@@ -899,7 +1041,44 @@ namespace RedisHelp
             ISubscriber sub = _conn.GetSubscriber();
             sub.UnsubscribeAll();
         }
+        #endregion
+       
+        #region 异步方法
+        /// <summary>
+        /// Redis发布订阅  订阅
+        /// </summary>
+        /// <param name="subChannel"></param>
+        /// <param name="handler"></param>
+        public void SubscribeAsync(string subChannel, Action<RedisChannel, RedisValue> handler = null)
+        {
+            ISubscriber sub = _conn.GetSubscriber();
+            sub.SubscribeAsync(subChannel, (channel, message) =>
+            {
+                if (handler == null)
+                {
+                    Console.WriteLine(subChannel + " 订阅收到消息：" + message);
+                }
+                else
+                {
+                    handler(channel, message);
+                }
+            });
+        }
 
+        /// <summary>
+        /// Redis发布订阅  发布
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="channel"></param>
+        /// <param name="msg"></param>
+        /// <returns></returns>
+        public async Task<long> PublishAsync<T>(string channel, T msg)
+        {
+            ISubscriber sub = _conn.GetSubscriber();
+            return await sub.PublishAsync(channel, ConvertJson(msg));
+        }
+
+        #endregion
         #endregion 发布订阅
 
         #region 其他

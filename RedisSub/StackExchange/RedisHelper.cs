@@ -740,12 +740,12 @@ namespace RedisHelp
         /// </summary>
         /// <param name="key"></param>
         /// <returns></returns>
-        public List<T> SetScan<T>(string key)
+        public List<T> SetMembers<T>(string key)
         {
             key = AddSysCustomKey(key);
             return Do(redis =>
             {
-                var values = redis.SetScan(key).ToArray();
+                var values = redis.SetMembers(key).ToArray();
                 return ConvetList<T>(values);
             });
         }
@@ -759,6 +759,18 @@ namespace RedisHelp
         {
             key = AddSysCustomKey(key);
             return Do(redis => redis.SetLength(key));
+        }
+
+        /// <summary>
+        /// 判断set的某个value是否存在
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public bool SetContains(string key, string value,CommandFlags flags = CommandFlags.None) 
+        {
+            key = AddSysCustomKey(key);
+            return Do(redis => redis.SetContains(key,value));
         }
 
         #endregion 同步方法
