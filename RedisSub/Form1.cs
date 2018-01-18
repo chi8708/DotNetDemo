@@ -49,7 +49,8 @@ namespace RedisSub
         private void insertSubData(RedisValue message)
         {
             vw_Call_TelService v=JsonConvert.DeserializeObject<vw_Call_TelService>(message.ToString());
-            redis.HashSet("order", v.TelServiceCode, message.ToString());
+            redis.HashSetAsync("order", v.TelServiceCode, message.ToString());
+            redis.HashDelete("orderlist", v.TelServiceCode);
         }
 
         private void btnClear_Click(object sender, EventArgs e)

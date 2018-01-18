@@ -31,12 +31,14 @@
             this.btnsub = new System.Windows.Forms.Button();
             this.lbMessage = new System.Windows.Forms.ListBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.lbnumtip = new System.Windows.Forms.Label();
-            this.lbNum = new System.Windows.Forms.Label();
             this.btnClear = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.lbNum = new System.Windows.Forms.Label();
+            this.lbnumtip = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnsub
@@ -58,7 +60,7 @@
             this.lbMessage.ItemHeight = 12;
             this.lbMessage.Location = new System.Drawing.Point(3, 0);
             this.lbMessage.Name = "lbMessage";
-            this.lbMessage.Size = new System.Drawing.Size(328, 204);
+            this.lbMessage.Size = new System.Drawing.Size(328, 196);
             this.lbMessage.TabIndex = 1;
             // 
             // panel1
@@ -71,35 +73,6 @@
             this.panel1.Size = new System.Drawing.Size(334, 59);
             this.panel1.TabIndex = 2;
             // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.lbNum);
-            this.panel2.Controls.Add(this.lbnumtip);
-            this.panel2.Controls.Add(this.lbMessage);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 59);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(334, 236);
-            this.panel2.TabIndex = 3;
-            // 
-            // lbnumtip
-            // 
-            this.lbnumtip.AutoSize = true;
-            this.lbnumtip.Location = new System.Drawing.Point(12, 215);
-            this.lbnumtip.Name = "lbnumtip";
-            this.lbnumtip.Size = new System.Drawing.Size(65, 12);
-            this.lbnumtip.TabIndex = 2;
-            this.lbnumtip.Text = "已接受数量";
-            // 
-            // lbNum
-            // 
-            this.lbNum.AutoSize = true;
-            this.lbNum.Location = new System.Drawing.Point(103, 215);
-            this.lbNum.Name = "lbNum";
-            this.lbNum.Size = new System.Drawing.Size(11, 12);
-            this.lbNum.TabIndex = 3;
-            this.lbNum.Text = "0";
-            // 
             // btnClear
             // 
             this.btnClear.Location = new System.Drawing.Point(132, 12);
@@ -109,6 +82,45 @@
             this.btnClear.Text = "清除";
             this.btnClear.UseVisualStyleBackColor = true;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.panel3);
+            this.panel2.Controls.Add(this.lbMessage);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(0, 59);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(334, 236);
+            this.panel2.TabIndex = 3;
+            // 
+            // lbNum
+            // 
+            this.lbNum.AutoSize = true;
+            this.lbNum.Location = new System.Drawing.Point(82, 12);
+            this.lbNum.Name = "lbNum";
+            this.lbNum.Size = new System.Drawing.Size(11, 12);
+            this.lbNum.TabIndex = 3;
+            this.lbNum.Text = "0";
+            // 
+            // lbnumtip
+            // 
+            this.lbnumtip.AutoSize = true;
+            this.lbnumtip.Location = new System.Drawing.Point(11, 11);
+            this.lbnumtip.Name = "lbnumtip";
+            this.lbnumtip.Size = new System.Drawing.Size(65, 12);
+            this.lbnumtip.TabIndex = 2;
+            this.lbnumtip.Text = "已接受数量";
+            // 
+            // panel3
+            // 
+            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel3.Controls.Add(this.lbnumtip);
+            this.panel3.Controls.Add(this.lbNum);
+            this.panel3.Location = new System.Drawing.Point(3, 202);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(319, 34);
+            this.panel3.TabIndex = 4;
             // 
             // Form1
             // 
@@ -121,7 +133,8 @@
             this.Text = "Form1";
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -135,6 +148,7 @@
         private System.Windows.Forms.Label lbnumtip;
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Label lbNum;
+        private System.Windows.Forms.Panel panel3;
     }
 }
 
