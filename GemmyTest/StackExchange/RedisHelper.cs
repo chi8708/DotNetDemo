@@ -282,6 +282,7 @@ namespace RedisHelp
          /// </summary>
          public bool HashSet(string key, List<HashEntry> hashEntrys, CommandFlags flags = CommandFlags.None)
         {
+            key = AddSysCustomKey(key);
             return Do(db =>
             {
                 db.HashSet(key, hashEntrys.ToArray(), flags);
@@ -289,6 +290,25 @@ namespace RedisHelp
             });
            
           }
+
+         /// <summary>
+         /// Redis散列数据类型  batch批量新增
+         /// </summary>
+         public bool HashSetBatch(string key,RedisValue[] values, CommandFlags flags = CommandFlags.None)
+         {
+             key = AddSysCustomKey(key);
+             return Do(db =>
+             {
+                 var batch= db.CreateBatch();
+                 foreach (var item in values)
+                 {
+                     batch.SetAddAsync(key,item, flags);
+                 }
+                 batch.Execute();
+                 return true;
+             });
+
+         }
 
         /// <summary>
         /// 移除hash中的某值

@@ -110,6 +110,7 @@ namespace GemmyTest.Controllers
                 var v = item.ToString();
             }
             #endregion
+
             #region 发布订阅
 
             //redis.Subscribe("Channel1");
