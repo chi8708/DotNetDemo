@@ -76,5 +76,11 @@ namespace GemmyTest.Controllers
 
             return null;
         }
+
+        public ActionResult SessionTest() 
+        {
+            Session["Test"] = "1111";
+            return View();
+        }
 	}
 }

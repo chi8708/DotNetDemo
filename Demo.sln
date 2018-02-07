@@ -47,6 +47,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GemmyTest", "GemmyTest\Gemm
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RedisSub", "RedisSub\RedisSub.csproj", "{8C838E91-60FB-45A0-8F6E-028D4BE4A329}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RedisSession", "RedisSession\RedisSession.csproj", "{6652EFBA-B983-4F0A-A5F2-A2F81172B1E2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -133,6 +135,10 @@ Global
 		{8C838E91-60FB-45A0-8F6E-028D4BE4A329}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8C838E91-60FB-45A0-8F6E-028D4BE4A329}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8C838E91-60FB-45A0-8F6E-028D4BE4A329}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6652EFBA-B983-4F0A-A5F2-A2F81172B1E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6652EFBA-B983-4F0A-A5F2-A2F81172B1E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6652EFBA-B983-4F0A-A5F2-A2F81172B1E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6652EFBA-B983-4F0A-A5F2-A2F81172B1E2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

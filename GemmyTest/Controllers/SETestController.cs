@@ -132,6 +132,7 @@ namespace GemmyTest.Controllers
             tran.StringSetAsync("tran_string", "test1");
             tran.StringSetAsync("tran_string1", "test2");
             bool committed = tran.Execute();
+           
 
             #endregion 事务
 

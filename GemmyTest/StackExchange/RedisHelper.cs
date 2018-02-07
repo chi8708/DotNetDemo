@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿extern alias SR;
+using Newtonsoft.Json;
 using StackExchange.Redis;
 using System;
 using System.Collections.Generic;
