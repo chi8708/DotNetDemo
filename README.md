@@ -21,4 +21,6 @@
 
 10.**QRCoderDemo**→开源QRCoder二维码生成使用。
 
-11.**GemmyTest**→图像合并、Redis使用
+11.**GemmyTest**→图像合并、Redis使用、Redis保存Session。
+
+12.**RedisSession**→Redis保存Session,不同Web项目Session共享。
