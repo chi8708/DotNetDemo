@@ -24,3 +24,5 @@
 11.**GemmyTest**→图像合并、Redis使用、Redis保存Session。
 
 12.**RedisSession**→Redis保存Session,不同Web项目Session共享。
+
+13.**DotnetDemo→CSharp6**→ C#6.0特性
