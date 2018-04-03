@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # DotNetDemo
 ### .net练习、测试
 
@@ -33,7 +33,7 @@
 
 2.**BootStrap**→ BootStrap、AngularJS、knockout。
 
-3.**DapperTest**→Dapper
+3.**DapperTest**→Dapper、Dapper T4生成三层。
 
 4.**EFCodeFirst**→Fluent Api
 
@@ -54,4 +54,4 @@
 12.**RedisSession**→Redis保存Session,不同Web项目Session共享。
 
 13.**DotnetDemo→CSharp6**→ C#6.0特性
->>>>>>> 551af3587d69aa5dd1ea8affc73c42a9283d543f
+
