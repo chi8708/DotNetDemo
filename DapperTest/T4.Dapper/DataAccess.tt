@@ -16,7 +16,8 @@ foreach(DbTable dbTable in dtList)
 	string tableName=dbTable.TableName;
 	var dbColList=dbHelper.GetDbColumns(tableName);
 	var parList=dbColList.Where(e=>!e.IsIdentity).ToList();
-	var isParList=dbColList.Where(e=>e.IsIdentity).ToList();
+	//var isParList=dbColList.Where(e=>e.IsIdentity).ToList();
+    var isParList=dbColList.Where(e=>e.IsPrimaryKey).ToList();
     var primaryKey=dbHelper.GetDbColumns(tableName).First(p=>p.IsPrimaryKey);
 	manager.StartNewFile(tableName+"Data.cs");#>
 //------------------------------------------------------------------------------
@@ -116,7 +117,7 @@ namespace <#=Config.Namespace#>.Data
 		{	
 			StringBuilder strSql = new StringBuilder();
 			strSql.Append("DELETE FROM <#=tableName#> ");
-			strSql.Append(" WHERE <#=primaryKey.ColumnName#>=<#= string.Join(",",dbColList.Where(e=>e.IsIdentity).Select(e=>preParameter+e.ColumnName).ToArray())#>");
+			strSql.Append(" WHERE <#=primaryKey.ColumnName#>=<#=string.Join(",",isParList.Select(e=>preParameter+e.ColumnName).ToArray()) #>");
 			var newClass = new
 			{
 			<# for(int i=0;i< isParList.Count;i++){ DbColumn c = dbColList[i];#>    <#=c.ColumnName#> = <#=c.ColumnName#><# if (i< isParList.Count-1 ) {#>,
@@ -132,7 +133,7 @@ namespace <#=Config.Namespace#>.Data
 		{	
 			StringBuilder strSql = new StringBuilder();
 			strSql.Append("DELETE FROM <#=tableName#> ");
-			strSql.Append(" WHERE <#=primaryKey.ColumnName#> in <#= string.Join(",",dbColList.Where(e=>e.IsIdentity).Select(e=>preParameter+e.ColumnName).ToArray())#>");
+			strSql.Append(" WHERE <#=primaryKey.ColumnName#> in <#=string.Join(",",isParList.Select(e=>preParameter+e.ColumnName).ToArray()) #>");
             var newClass = new
 			{
 			<# for(int i=0;i< isParList.Count;i++){ DbColumn c = dbColList[i];#>    <#=c.ColumnName#> = <#=c.ColumnName#><# if (i< isParList.Count-1 ) {#>,
@@ -151,7 +152,7 @@ namespace <#=Config.Namespace#>.Data
             StringBuilder strSql = new StringBuilder();
             strSql.Append("SELECT <#= dbHelper.GetFileStrWithPrimaryKey(dbColList) #> ");
 			strSql.Append(" FROM <#=tableName#> ");
-            strSql.Append(" WHERE <#=primaryKey.ColumnName#>=<#= string.Join(",",dbColList.Where(e=>e.IsIdentity).Select(e=>preParameter+e.ColumnName).ToArray())#>");
+            strSql.Append(" WHERE <#=primaryKey.ColumnName#>=<#=string.Join(",",isParList.Select(e=>preParameter+e.ColumnName).ToArray())#>");
 			var newClass = new
 			{
 			<# for(int i=0;i< isParList.Count;i++){ DbColumn c = dbColList[i];#>    <#=c.ColumnName#> = <#=c.ColumnName#><# if (i< isParList.Count-1 ) {#>,

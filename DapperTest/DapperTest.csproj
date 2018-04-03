@@ -41,15 +41,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Dapper, Version=1.40.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Dapper.1.42\lib\net45\Dapper.dll</HintPath>
+    <Reference Include="Dapper, Version=1.50.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.1.50.0\lib\net45\Dapper.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Dapper.Extension">
-      <HintPath>..\packages\Dapper.Extension.1.0.0.1\lib\net45\Dapper.Extension.dll</HintPath>
-    </Reference>
-    <Reference Include="DapperExtensions">
+    <Reference Include="DapperExtensions, Version=1.6.3.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\DapperExtensions.1.6.3\lib\net45\DapperExtensions.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="EnvDTE, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
       <EmbedInteropTypes>True</EmbedInteropTypes>
@@ -196,6 +194,29 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="T4.DapperExtensions\BaseService.cs" />
+    <Compile Include="T4.DapperExtensions\BaseData.cs" />
+    <Compile Include="T4.DapperExtensions\Tabl2.cs">
+      <DependentUpon>Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T4.DapperExtensions\Tabl2Data.cs">
+      <DependentUpon>DataAccess.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T4.DapperExtensions\Tabl2DataExt.cs">
+      <DependentUpon>DataAccess.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T4.DapperExtensions\Tabl2Service.cs">
+      <DependentUpon>Business.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T4.DapperExtensions\Table1.cs">
+      <DependentUpon>Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T4.DapperExtensions\Table1Data.cs">
+      <DependentUpon>DataAccess.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T4.DapperExtensions\Table1Service.cs">
+      <DependentUpon>Business.tt</DependentUpon>
+    </Compile>
     <Compile Include="T4.Dapper\Db_Tabl2.cs">
       <DependentUpon>Entity.tt</DependentUpon>
     </Compile>
@@ -251,6 +272,33 @@
     <Content Include="T4.Chloe\Entity.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Entity.cs</LastGenOutput>
+    </Content>
+    <Content Include="T4.DapperExtensions\Business.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Business.txt</LastGenOutput>
+    </Content>
+    <Content Include="T4.DapperExtensions\Business.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Business.tt</DependentUpon>
+    </Content>
+    <Content Include="T4.DapperExtensions\DataAccess.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>DataAccess.txt</LastGenOutput>
+    </Content>
+    <Content Include="T4.DapperExtensions\DataAccess.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataAccess.tt</DependentUpon>
+    </Content>
+    <Content Include="T4.DapperExtensions\Entity.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Entity.txt</LastGenOutput>
+    </Content>
+    <Content Include="T4.DapperExtensions\Entity.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Entity.tt</DependentUpon>
     </Content>
     <Content Include="T4.DapperEx\Business.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
