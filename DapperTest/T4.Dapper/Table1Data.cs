@@ -183,8 +183,7 @@ namespace DapperTest.Data
 		        strSql.Append(" WHERE   " + strWhere);
 		    }
 		    strSql.Append(" ) TT");
-            strSql.AppendFormat(" WHERE TT.Row between {0} and {1}", (pageIndex-1)*pageSize+1,
-                pageIndex * pageSize);
+            strSql.AppendFormat(" WHERE TT.Row between {0} and {1}", (pageIndex-1)*pageSize+1,pageIndex * pageSize);
 
 		    return DapperHelper.Query<Db_Table1>(strSql.ToString(), param);
 		}

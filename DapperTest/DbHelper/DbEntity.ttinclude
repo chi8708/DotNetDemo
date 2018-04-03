@@ -17,7 +17,7 @@
         //命名空间
         public static readonly string Namespace = "DapperTest";
 		//需要生成的表名，多张表用,分割
-        public static readonly string Tables = "Table1";//"users,rows,titles"
+        public static readonly string Tables = "";//"users,rows,titles"
     }
     public class DbFactory
     {
@@ -35,7 +35,7 @@
     {
         public abstract string PreParameter { get; set; }
         public abstract List<DbTable> GetDbTables();
-        public abstract List<DbColumn> GetDbColumns(string tableName, string schema = null);
+        public abstract List<DbColumn> GetDbColumns(string tableName, string schema);
         public abstract DataTable GetDataTable(string commandText, params IDataParameter[] parms);
         public abstract string GetParStr(List<DbColumn> dbComList);
 
@@ -55,6 +55,20 @@
             fields.Remove(fields.Length - 1, 1);
             return fields.ToString();
         }
+
+        public string GetFileStrWithPrimaryKey(List<DbColumn> dbColList)
+        {
+            StringBuilder fields = new StringBuilder();
+            foreach (DbColumn column in dbColList)
+            {
+
+                fields.Append(column.ColumnName);
+                fields.Append(",");
+            }
+            fields.Remove(fields.Length - 1, 1);
+            return fields.ToString();
+        }
+
         protected string BGetParStr(List<DbColumn> dbColList, string parStr)
         {
             StringBuilder fields = new StringBuilder();

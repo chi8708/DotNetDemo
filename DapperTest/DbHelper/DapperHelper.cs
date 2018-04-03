@@ -12,8 +12,8 @@ namespace DapperTest
     public  class DapperHelper
     {
         private static readonly string connStr = ConfigurationManager.ConnectionStrings["connStr"].ConnectionString;
-       
 
+        public static string ConnStr { get { return connStr; } }
         /// <summary>
         /// Excute返回受影响行数
         /// </summary>

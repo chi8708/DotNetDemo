@@ -60,6 +60,19 @@ namespace T4
             fields.Remove(fields.Length - 1, 1);
             return fields.ToString();
         }
+
+        public string GetFileStrWithPrimaryKey(List<DbColumn> dbColList)
+        {
+            StringBuilder fields = new StringBuilder();
+            foreach (DbColumn column in dbColList)
+            {
+
+                fields.Append(column.ColumnName);
+                fields.Append(",");
+            }
+            fields.Remove(fields.Length - 1, 1);
+            return fields.ToString();
+        }
         protected string BGetParStr(List<DbColumn> dbColList, string parStr)
         {
             StringBuilder fields = new StringBuilder();

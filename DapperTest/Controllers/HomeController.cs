@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using T4;
 
 namespace DapperTest.Controllers
 {
@@ -11,7 +12,15 @@ namespace DapperTest.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            MsSqlDbHelper msHelper = new MsSqlDbHelper();
+            var colunms= msHelper.GetDbColumns("");
+            foreach (var item in colunms)
+            {
+               var i= item.ColumnName.Substring(0, 1).ToUpper() + item.ColumnName.Substring(1);
+            }
+
+            
+            return null;
         }
 
         public ActionResult About()
@@ -28,4 +37,6 @@ namespace DapperTest.Controllers
             return View();
         }
     }
+
+
 }

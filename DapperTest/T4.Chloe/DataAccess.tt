@@ -19,7 +19,7 @@ foreach(DbTable dbTable in dtList)
 //	   生成时间 <#=DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")#>
 //     对此文件的更改可能会导致不正确的行为，并且如果
 //     重新生成代码，这些更改将会丢失
-//     作者：Harbour
+//     作者：Harbour CTS
 // </auto-generated>
 //------------------------------------------------------------------------------
 
@@ -33,7 +33,7 @@ using <#=Config.Namespace#>.Model;
 
 namespace <#=Config.Namespace#>.Data
 {	
-	public partial class <#=tableName+"Data"#> : BaseData<Db_<#=tableName#>>
+	public partial class <#=tableName+"Data"#> : BaseData<<#=tableName#>>
     {
 	}
 }

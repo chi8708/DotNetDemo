@@ -47,7 +47,7 @@ class Manager {
     public void StartNewFile(String name) {
         if (name == null)
             throw new ArgumentNullException("name");
-        CurrentBlock = new Block { Name = name };
+        CurrentBlock = new Block { Name = name,IncludeInDefault=true };
     }
 
     public void StartFooter(bool includeInDefault = true) {
@@ -175,9 +175,10 @@ class Manager {
                 projectFiles.Add(projectItem.get_FileNames(0), projectItem);
 
             // Remove unused items from the project
-            foreach(var pair in projectFiles)
-                if (!keepFileNames.Contains(pair.Key) && !(Path.GetFileNameWithoutExtension(pair.Key) + ".").StartsWith(originalFilePrefix))
-                    pair.Value.Delete();
+               // 会删除tt已有文件 注释下列代码（不删除）
+            //foreach(var pair in projectFiles)
+                //if (!keepFileNames.Contains(pair.Key) && !(Path.GetFileNameWithoutExtension(pair.Key) + ".").StartsWith(originalFilePrefix))
+                    //pair.Value.Delete();
 
             // Add missing files to the project
             foreach(String fileName in keepFileNameSet)
