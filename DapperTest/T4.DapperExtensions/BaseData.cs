@@ -5,6 +5,8 @@ using System.Web;
 using Dapper;
 using DapperExtensions;
 using System.Data.SqlClient;
+using System.Text;
+using System.Data;
 
 namespace DapperTest.Data
 {
@@ -198,17 +200,43 @@ namespace DapperTest.Data
         /// <param name="predicate"></param>
         /// <param name="sort"></param>
         /// <returns></returns>
-        public IEnumerable<T> GetList(object predicate = null, IList<ISort> sort = null)
+        public List<T> GetList(object predicate = null, IList<ISort> sort = null)
         {
-               IEnumerable<T> t = null;
-                using (SqlConnection cn = new SqlConnection(DapperHelper.ConnStr))
-                {
-                    cn.Open();
-                    t = cn.GetList<T>(predicate, sort).ToList();//不使用ToList  SqlConnection未初始化
-                    cn.Close();
-                }
+            List<T> t = null;
+            using (SqlConnection cn = new SqlConnection(DapperHelper.ConnStr))
+            {
+                cn.Open();
+                t = cn.GetList<T>(predicate, sort).ToList();//不使用ToList  SqlConnection未初始化
+                cn.Close();
+            }
 
-                return t;
+            return t;
+
+        }
+
+        /// <summary>
+        /// 根据条件查询实体列表
+        /// </summary>
+        /// <param name="where"></param>
+        /// <param name="sort"></param>
+        /// <returns></returns>
+        public List<T> GetList(string where, string sort = null)
+        {
+            var tableName = typeof(T).Name;
+            StringBuilder sql = new StringBuilder().AppendFormat("SELECT * FROM {0} ", tableName);
+            if (!string.IsNullOrEmpty(where))
+            {
+                sql.AppendFormat(" where {0} ", where);
+            }
+            if (!string.IsNullOrEmpty(sort))
+            {
+                sql.AppendFormat(" order by {0} ", sort);
+            }
+
+            using (SqlConnection cn = new SqlConnection(DapperHelper.ConnStr))
+            {
+                return cn.Query<T>(sql.ToString()).ToList();
+            }
 
         }
 
@@ -241,9 +269,9 @@ namespace DapperTest.Data
         /// <param name="page">页索引</param>
         /// <param name="resultsPerPage">页大小</param>
         /// <returns></returns>
-        public IEnumerable<T> GetPage(object predicate, IList<ISort> sort, int page,int resultsPerPage)
+        public List<T> GetPage(object predicate, IList<ISort> sort, int page, int resultsPerPage)
         {
-            IEnumerable<T> t = null;
+            List<T> t = null;
             using (SqlConnection cn = new SqlConnection(DapperHelper.ConnStr))
             {
                 cn.Open();
@@ -253,6 +281,47 @@ namespace DapperTest.Data
 
             return t;
 
+        }
+
+
+        /// <summary>
+        /// 存储过程分页查询
+        /// </summary>
+        /// <param name="where">条件</param>
+        /// <param name="sort">分类</param>
+        /// <param name="page">页索引</param>
+        /// <param name="resultsPerPage">页大小</param>
+        /// <param name="fields">查询字段</param>
+        /// <returns></returns>
+        public PageDateRep<T> GetPage(string where, string sort, int page, int resultsPerPage, string fields = "*")
+        {
+            var tableName = typeof(T).Name;
+            var p = new DynamicParameters();
+            p.Add("@TableName", tableName);
+            p.Add("@Fields", fields);
+            p.Add("@OrderField", sort);
+            p.Add("@sqlWhere", where);
+            p.Add("@pageSize", resultsPerPage);
+            p.Add("@pageIndex", page);
+            p.Add("@TotalPage", 0, direction: ParameterDirection.Output);
+            p.Add("@Totalrow", 0, direction: ParameterDirection.Output);
+
+            using (SqlConnection cn = new SqlConnection(DapperHelper.ConnStr))
+            {
+
+                var data = cn.Query<T>("P_ZGrid_PagingLarge", p, commandType: CommandType.StoredProcedure);
+                int totalPage = p.Get<int>("@TotalPage");
+                int totalrow = p.Get<int>("@Totalrow");
+
+                var rep = new PageDateRep<T>()
+                {
+                    code = 0,
+                    count = totalrow,
+                    data = data.ToList()
+                };
+
+                return rep;
+            }
         }
     }
 }

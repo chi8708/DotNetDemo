@@ -6,6 +6,8 @@ using Dapper;
 using DapperExtensions;
 using System.Data.SqlClient;
 using DapperTest.Data;
+using System.Text;
+using System.Data;
 
 namespace DapperTest.Service
 {
@@ -102,9 +104,22 @@ namespace DapperTest.Service
         /// <param name="predicate"></param>
         /// <param name="sort"></param>
         /// <returns></returns>
-        public IEnumerable<T> GetList(object predicate = null, IList<ISort> sort = null)
+        public List<T> GetList(object predicate = null, IList<ISort> sort = null)
         {
-            return dal.GetList(predicate,sort);
+            return dal.GetList(predicate, sort);
+
+        }
+
+
+        /// <summary>
+        /// 根据条件查询实体列表
+        /// </summary>
+        /// <param name="where"></param>
+        /// <param name="sort"></param>
+        /// <returns></returns>
+        public List<T> GetList(string where, string sort = null)
+        {
+            return dal.GetList(where, sort);
 
         }
 
@@ -128,10 +143,26 @@ namespace DapperTest.Service
         /// <param name="page">页索引</param>
         /// <param name="resultsPerPage">页大小</param>
         /// <returns></returns>
-        public IEnumerable<T> GetPage(object predicate, IList<ISort> sort, int page,int resultsPerPage)
+        public List<T> GetPage(object predicate, IList<ISort> sort, int page, int resultsPerPage)
         {
+            page = page - 1;
             return dal.GetPage(predicate, sort, page, resultsPerPage);
 
         }
+
+        /// <summary>
+        /// 存储过程分页查询
+        /// </summary>
+        /// <param name="where"></param>
+        /// <param name="sort"></param>
+        /// <param name="page"></param>
+        /// <param name="resultsPerPage"></param>
+        /// <returns></returns>
+
+        public PageDateRep<T> GetPage(string where, string sort, int page, int resultsPerPage, string fields = "*")
+        {
+            return dal.GetPage(where, sort, page, resultsPerPage);
+        }
+
     }
 }
