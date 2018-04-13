@@ -185,10 +185,11 @@ namespace UnitTestDemo
        public void DeleteBatchExt()
        {
            List<Tabl2> users = new List<Tabl2>{
-                new Tabl2(){id=14019,Name="rose4"}, 
-                new Tabl2(){id=14020,Name="rose5"}, 
+                new Tabl2(){id=14018}, 
+                new Tabl2(){id=14021}, 
             };
 
+           Assert.IsTrue(tBLL.DeleteBatch(users));
            Assert.IsTrue(tBLL.DeleteBatch(users));
        }
 
