@@ -197,6 +197,7 @@
     <Compile Include="T4.DapperExtensions\BaseEntity.cs" />
     <Compile Include="T4.DapperExtensions\BaseService.cs" />
     <Compile Include="T4.DapperExtensions\BaseData.cs" />
+    <Compile Include="T4.DapperExtensions\Class1.cs" />
     <Compile Include="T4.DapperExtensions\PageDateRep.cs" />
     <Compile Include="T4.DapperExtensions\Pub_Function.cs">
       <DependentUpon>Entity.tt</DependentUpon>
