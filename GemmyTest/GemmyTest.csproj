@@ -118,6 +118,7 @@
     <Content Include="image\Desert.jpg" />
     <Content Include="image\qrCodebg.png" />
     <Content Include="log4net.config" />
+    <Content Include="表作为存储过程参数.sql" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="image\qrLogo.jpg" />
     <Content Include="LodopTest.html" />
@@ -139,11 +140,15 @@
     <Compile Include="Controllers\QRCodeController.cs" />
     <Compile Include="Controllers\RedisTestController.cs" />
     <Compile Include="Controllers\SETestController.cs" />
+    <Compile Include="Controllers\SqlTestController.cs" />
+    <Compile Include="DbHelperSQL.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="LogHelper.cs" />
+    <Compile Include="Models\Orders.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PubConstant.cs" />
     <Compile Include="QRCoderHelper.cs" />
     <Compile Include="RedisUtil\DoRedisBase.cs" />
     <Compile Include="RedisUtil\DoRedisHash.cs" />
@@ -173,8 +178,8 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\" />
-    <Folder Include="Models\" />
     <Folder Include="Views\SETest\" />
+    <Folder Include="Views\SqlTest\" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
