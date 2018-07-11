@@ -6,6 +6,7 @@ using Microsoft.Owin.Security.OAuth;
 using MvcApi.App_Start;
 using Owin;
 using System;
+using System.IO;
 using System.Security.Claims;
 using System.Web.Http;
 
@@ -19,7 +20,7 @@ namespace MvcApi
             //HttpConfiguration config = new HttpConfiguration();
             //WebApiConfig.Register(config);
             //app.UseWebApi(config);
-          //  Auth2Config.OAuth(app);
+          //Auth2Config.OAuth(app);
             //AuthConfig.ClaimsBasedAuth(app);
 
             AuthorizeConfig.OAuth(app);
