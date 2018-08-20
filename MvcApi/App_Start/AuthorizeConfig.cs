@@ -51,7 +51,7 @@ namespace MvcApi.App_Start
             context.Ticket.Properties.IssuedUtc = DateTime.UtcNow;
             context.Ticket.Properties.ExpiresUtc = DateTime.UtcNow.AddDays(1);
 
-           
+
             context.SetToken(Guid.NewGuid().ToString("n") + Guid.NewGuid().ToString("n"));
             _refreshTokens[context.Token] = context.SerializeTicket();
             context.SerializeTicket();

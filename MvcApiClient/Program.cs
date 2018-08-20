@@ -1,5 +1,6 @@
 ﻿using MvcApi.Models;
 using MvcApiSelfHost;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -46,7 +47,9 @@ namespace MvcApiClient
                };
 
                 var tokenResponse = client.PostAsync(baseAddress + "accesstoken", new FormUrlEncodedContent(form)).Result;
-                var token = tokenResponse.Content.ReadAsAsync<Token>().Result;
+                var token2 = tokenResponse.Content.ReadAsAsync(typeof(object)).Result.ToString();
+                var token = JsonConvert.DeserializeObject<Token>(token2);
+               // var token = tokenResponse.Content.ReadAsAsync<Token>().Result;
                 Console.WriteLine("Token issued is: {0}", token.AccessToken);
                 Console.WriteLine();
 
