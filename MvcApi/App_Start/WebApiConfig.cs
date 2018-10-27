@@ -43,7 +43,8 @@ namespace MvcApi
             //config.SuppressDefaultHostAuthentication();
           //  config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
 
-
+            config.Formatters.Clear();
+            config.Formatters.Add(new JsonMediaTypeFormatter());
         }
     }
 }

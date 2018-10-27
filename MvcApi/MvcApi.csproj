@@ -239,6 +239,7 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Common\RestClient.cs" />
     <Compile Include="Controllers\AuthContent.cs" />
+    <Compile Include="Controllers\BaseApiController.cs" />
     <Compile Include="Controllers\FileController.cs" />
     <Compile Include="Controllers\FileServerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />

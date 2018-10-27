@@ -117,7 +117,9 @@
     <Content Include="Global.asax" />
     <Content Include="image\Desert.jpg" />
     <Content Include="image\qrCodebg.png" />
-    <Content Include="log4net.config" />
+    <Content Include="log4net.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="表作为存储过程参数.sql" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="image\qrLogo.jpg" />

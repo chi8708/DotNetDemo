@@ -25,12 +25,18 @@ namespace MvcApi.Controllers
     /// <summary>
     /// 测试Api
     /// </summary>
-    public class TestApiController : ApiController
+    public class TestApiController : BaseApiController
     {
         
         //
-         IList<People> data = new List<People> { new People {Id=1, Name = "test1", Age = 11 }, new People {Id=2, Name = "test2", Age = 13 } };
+         IList<People> data = new List<People> { new People {Id=1, Name = "test1", Age = 11 }, new People {Id=2, Name = "test2", Age = 13,CreateTime=DateTime.Now } };
 
+
+         [Route("api/TestApi/{id}")]
+         public IEnumerable<People> Get(int id) 
+         {
+             return data;
+         }
         /// <summary>
          /// Get api/TestApi
         /// </summary>

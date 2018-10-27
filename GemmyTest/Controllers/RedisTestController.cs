@@ -1,4 +1,6 @@
-﻿using GemmyTest.RedisUtil;
+﻿using Common;
+using GemmyTest.RedisUtil;
+using RedisHelp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +16,7 @@ namespace GemmyTest.Controllers
         // GET: /RedisTest/
         public ActionResult Index()
         {
+            RedisConnectionHelper.WrtieRedisLog(LogLevel.Info, "ssss");
             string key = "zlh";
             //清空数据库
             DoRedisBase.Core.FlushAll();
