@@ -31,6 +31,8 @@ namespace JWTDemo
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            //参考 https://www.cnblogs.com/aishangyipiyema/p/9262642.html
             JWTConfig(services);
         }
 
