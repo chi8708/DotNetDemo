@@ -1,0 +1,14 @@
+F:\Study\DotNet\Exerice\JWTDemo\bin\Debug\netcoreapp2.1\JWTDemo.deps.json
+F:\Study\DotNet\Exerice\JWTDemo\bin\Debug\netcoreapp2.1\JWTDemo.runtimeconfig.json
+F:\Study\DotNet\Exerice\JWTDemo\bin\Debug\netcoreapp2.1\JWTDemo.runtimeconfig.dev.json
+F:\Study\DotNet\Exerice\JWTDemo\bin\Debug\netcoreapp2.1\JWTDemo.dll
+F:\Study\DotNet\Exerice\JWTDemo\bin\Debug\netcoreapp2.1\JWTDemo.pdb
+F:\Study\DotNet\Exerice\JWTDemo\obj\Debug\netcoreapp2.1\JWTDemo.csprojAssemblyReference.cache
+F:\Study\DotNet\Exerice\JWTDemo\obj\Debug\netcoreapp2.1\JWTDemo.csproj.CoreCompileInputs.cache
+F:\Study\DotNet\Exerice\JWTDemo\obj\Debug\netcoreapp2.1\JWTDemo.RazorAssemblyInfo.cache
+F:\Study\DotNet\Exerice\JWTDemo\obj\Debug\netcoreapp2.1\JWTDemo.RazorAssemblyInfo.cs
+F:\Study\DotNet\Exerice\JWTDemo\obj\Debug\netcoreapp2.1\JWTDemo.AssemblyInfoInputs.cache
+F:\Study\DotNet\Exerice\JWTDemo\obj\Debug\netcoreapp2.1\JWTDemo.AssemblyInfo.cs
+F:\Study\DotNet\Exerice\JWTDemo\obj\Debug\netcoreapp2.1\JWTDemo.RazorTargetAssemblyInfo.cache
+F:\Study\DotNet\Exerice\JWTDemo\obj\Debug\netcoreapp2.1\JWTDemo.dll
+F:\Study\DotNet\Exerice\JWTDemo\obj\Debug\netcoreapp2.1\JWTDemo.pdb
