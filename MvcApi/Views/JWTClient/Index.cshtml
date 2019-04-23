@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <meta charset="utf-8" />
+    <script src="~/Scripts/jquery-2.1.3.js"></script>
+</head>
+<body>
+    <fieldset>
+        <legend>身份验证</legend>
+        <form>
+            <label for="UserName">用户名:</label><input type="text" name="userName" id="userName" value="cts" />
+            <br />
+            <br />
+            <label for="Password">密码:</label><input type="password" name="password" id="password" value="123" />
+            <br />
+            <br />
+        </form>
+        <button id="login">登录</button>
+    </fieldset>
+    <br />
+
+    <fieldset>
+        <legend>调用接口</legend>
+        <button id="invoke">调用接口</button>
+    </fieldset>
+    <script>
+        $(function () {
+            //调用api站点的登录接口,接口在登录成功后返回一个token。
+            $("#login").on("click", function () {
+                $.ajax({
+                    url: "http://localhost:61864//api/home",
+                    data: $("form").serialize(),
+                    method: "post",
+                    success: function (data) {
+                        if (data.Success) {
+                            //为简单起见，将token保存在全局变量中。
+                            window.token = data.Token;
+                            alert("登录成功");
+                        } else {
+                            alert("登录失败:" + data.Message);
+                        }
+                    }
+                });
+            });
+
+            //调用api站点的获取数据的接口，该接口要求身份验证。
+            $("#invoke").on("click", function () {
+                console.log(window.token);
+                $.ajax({
+                    url: "http://localhost:61864/api/user",
+                    method: "get",
+                    headers: { "auth": window.token },//通过请求头来发送token，放弃了通过cookie的发送方式
+                    complete: function (jqXHR,textStatus) {
+                        alert(jqXHR.responseText);
+                    },
+
+                });
+            });
+        });
+    </script>
+</body>
+</html>
