@@ -28,6 +28,11 @@
 
 13.**DotnetDemo→CSharp6**→ C#6.0特性
 
-14.**WebApiDoc**→swagger webapi 说明文档
+14.**WebApiDoc**→swagger webapi 说明文档
+
+15.**JWTDemo**→.net core jwt使用
+
+16.**JWTDemo2**→.net framework jwt使用,客户端MvcApi中的JWTClient使用跨域请求。
+
 
 
