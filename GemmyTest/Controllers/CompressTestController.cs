@@ -26,7 +26,7 @@ namespace GemmyTest.Controllers
             //Directory.CreateDirectory(resetDir);
 
             //CopyFile(@"E:\compressTest",resetDir);
-            SevenZipCompressor.Zip(new List<string> { @"E:\compressTest" }, outFile);
+            SevenZipCompressor.Zip(new List<string> { @"E:\compressTest\" }, outFile);
             return Content(outFile);
         }
 

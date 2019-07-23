@@ -239,8 +239,11 @@ namespace GemmyTest
                 return new Dictionary<string, string>();
             }
 
-            string dirname = new string(fileList.First().Substring(0, fileList.Min(s => s.Length)).TakeWhile((c, i) => fileList.All(s => s[i] == c)).ToArray());
-            Dictionary<string, string> dic = fileList.ToDictionary(s => s, s => s.Substring(dirname.Length));
+            //cts 修改
+            //string dirname = new string(fileList.First().Substring(0, fileList.Min(s => s.Length)).TakeWhile((c, i) => fileList.All(s => s[i] == c)).ToArray());
+            //Dictionary<string, string> dic = fileList.ToDictionary(s => s, s => s.Substring(dirname.Length));
+
+            Dictionary<string, string> dic = fileList.ToDictionary(s => s, s => s.Substring(s.LastIndexOf("\\")+1));
             return dic;
         }
     }
