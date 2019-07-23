@@ -1,0 +1,44 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+}
+
+<h2>Index</h2>
+<input type="button" value="压缩" onclick="compress" />
+<iframe style="display:none" id="frFile"></iframe>
+
+
+<script type="text/javascript">
+    function compress() {
+      
+        $.post("Compress", function (res) {
+            $("#frFile").attr("src", res)
+        })
+    }
+
+    function download() {
+            var url = '/Order/DownloadResource?o=90&t=bf32a13f4701473a9385896f5578953d';
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', url, true);        // 也可以使用POST方式，根据接口
+            xhr.responseType = "blob";    // 返回类型blob
+            xhr.onload = function () {
+                if (this.status === 200) {
+                    var blob = this.response;
+                    var reader = new FileReader();
+                    reader.readAsDataURL(blob);    // 转换为base64，可以直接放入a表情href
+                    reader.onload = function (e) {
+                        var a = document.createElement('a');
+                        a.download = 'data.rar';//下载文件名
+                        a.href = e.target.result;
+                        $("body").append(a);    // 修复firefox中无法触发click
+                        a.click();
+                        $(a).remove();
+                    }
+                }
+            };
+            // 发送ajax请求
+            xhr.send()
+
+        }
+</script>
