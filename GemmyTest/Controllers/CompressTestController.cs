@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -16,41 +17,36 @@ namespace GemmyTest.Controllers
 
         public ActionResult Compress()
         {
-            var outFile = Server.MapPath("~/compress");
+            var outFile = Server.MapPath("~/compress/a.zip");
+            //var resetDir = @"E:\compressTest\a";
+            //if (Directory.Exists(resetDir))
+            //{
+            //    Directory.Delete(resetDir);
+            //}
+            //Directory.CreateDirectory(resetDir);
+
+            //CopyFile(@"E:\compressTest",resetDir);
             SevenZipCompressor.Zip(new List<string> { @"E:\compressTest" }, outFile);
-            return View();
+            return Content(outFile);
         }
 
-        [HttpPost]
-        public void Download(string o, string t)
+        public ActionResult CompressStream()
         {
-            string filePath = @"D:\Download\排期（20190412）.xlsx";
+            var outFile = Server.MapPath("~/compress/a.zip");
+            var stream= SevenZipCompressor.ZipStream(new List<string> { @"E:\compressTest" }, outFile);
+            //return new FileStreamResult(stream, "application/octet-stream");
 
-            #region 处理下文件
-            var arr = filePath.Split('\\');
-            string fileName = arr[arr.Length - 1];
-            System.IO.FileInfo fileInfo = new System.IO.FileInfo(filePath);
-            if (fileInfo.Exists == true)
+            return File(outFile, "application/octet-stream");
+        }
+
+        public void CopyFile(string inDir,string outDir)
+        {
+            var files = Directory.GetFiles(inDir);
+         
+            foreach (var file in files)
             {
-                const long ChunkSize = 102400;//100K 每次读取文件，只读取100K，这样可以缓解服务器的压力
-                byte[] buffer = new byte[ChunkSize];
-
-                Response.Clear();
-                System.IO.FileStream iStream = System.IO.File.OpenRead(filePath);
-                long dataLengthToRead = iStream.Length;//获取下载的文件总大小
-                Response.ContentType = "application/octet-stream";
-                Response.AddHeader("Content-Disposition", "attachment; filename=" + HttpUtility.UrlEncode(fileName));
-                while (dataLengthToRead > 0 && Response.IsClientConnected)
-                {
-                    int lengthRead = iStream.Read(buffer, 0, Convert.ToInt32(ChunkSize));//读取的大小
-                    Response.OutputStream.Write(buffer, 0, lengthRead);
-                    Response.Flush();
-                    dataLengthToRead = dataLengthToRead - lengthRead;
-                }
-                Response.Close();
-                Response.End();
+                System.IO.File.Copy(file, outDir + "\\O" + file.Substring(file.LastIndexOf('\\')+2),true);
             }
-            #endregion
         }
     }
 }
