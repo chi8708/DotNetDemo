@@ -87,8 +87,6 @@ F:\Study\DotNet\Exerice\JWTDemo2\bin\zh-Hans\System.Web.Razor.resources.dll
 F:\Study\DotNet\Exerice\JWTDemo2\bin\zh-Hans\System.Web.WebPages.resources.dll
 F:\Study\DotNet\Exerice\JWTDemo2\bin\zh-Hans\System.Web.WebPages.Deployment.resources.dll
 F:\Study\DotNet\Exerice\JWTDemo2\bin\zh-Hans\System.Web.WebPages.Razor.resources.dll
-F:\Study\DotNet\Exerice\JWTDemo2\obj\Debug\JWTDemo2.csprojAssemblyReference.cache
-F:\Study\DotNet\Exerice\JWTDemo2\obj\Debug\JWTDemo2.csproj.CoreCompileInputs.cache
-F:\Study\DotNet\Exerice\JWTDemo2\obj\Debug\JWTDemo2.csproj.CopyComplete
 F:\Study\DotNet\Exerice\JWTDemo2\obj\Debug\JWTDemo2.dll
 F:\Study\DotNet\Exerice\JWTDemo2\obj\Debug\JWTDemo2.pdb
+F:\Study\DotNet\Exerice\JWTDemo2\obj\Debug\JWTDemo2.csprojResolveAssemblyReference.cache

@@ -1,4 +1,5 @@
-﻿using MvcApi.Models;
+﻿using ConsoleApplication1;
+using MvcApi.Models;
 using MvcApiSelfHost;
 using Newtonsoft.Json;
 using System;
@@ -22,9 +23,16 @@ namespace MvcApiClient
             //RestClient client = new RestClient("http://localhost:8068");
 
             //client.Post("dssddd", "/api/values");
-            AuthMvcApibyToken();
+            listen.Start();
+            //AuthMvcApibyToken();
            
         }
+
+
+
+
+
+
 
         private static void AuthMvcApibyToken() 
         {

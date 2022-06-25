@@ -46,7 +46,7 @@
             }).ToList();
         }
 
-        public override List<DbColumn> GetDbColumns(string tableName, string schema = "dbo")
+        public override List<DbColumn> GetDbColumns(string tableName, string schema)
         {
             #region SQL
             string sql = string.Format(@"SELECT ORDINAL_POSITION  ColumnID,COLUMN_KEY='PRI' IsPrimaryKey,COLUMN_NAME ColumnName,

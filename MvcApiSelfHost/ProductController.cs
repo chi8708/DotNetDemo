@@ -11,7 +11,7 @@ namespace MvcApiSelfHost
     using System.Linq;
     using System.Net;
     using System.Web.Http;
-
+   [RoutePrefix("Products")]
     public class ProductsController : ApiController
     {
         Product[] products = new Product[]  
@@ -21,6 +21,8 @@ namespace MvcApiSelfHost
             new Product { Id = 3, Name = "Hammer", Category = "Hardware", Price = 16.99M }  
         };
 
+       [Route("GetAllProducts")]
+       [HttpGet]
         public IEnumerable<Product> GetAllProducts()
         {
             return products;
